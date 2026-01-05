@@ -10,15 +10,15 @@ interface IButton {
 const Button = ({ type, href, desc, theme }: IButton) => {
   // "A man, a plan, a canal, Panama!"
 
-  const button =
-    type === "link" ? (
-      <a href={href} className={styles.link}>
-        {desc}
-      </a>
-    ) : (
+  return type === "link" ? (
+    <a href={href} className={styles.link}>
+      {desc}
+    </a>
+  ) : (
+    <div className={`${styles[theme]} ${styles.button}`}>
       <button type={type}>{desc}</button>
-    );
-  return <div className={`${styles[theme]} ${styles.button}`}>{button}</div>;
+    </div>
+  );
 };
 
 export default Button;
