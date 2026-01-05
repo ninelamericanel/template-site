@@ -1,4 +1,4 @@
-interface ICake {
+export interface ICake {
   name: string;
   id: string;
   realese: string;

@@ -4,6 +4,7 @@ import BannerSlider from "../components/BannerSlider/BannerSlider";
 import Locations from "../components/Locations";
 import Features from "../components/Features";
 import PreviewShop from "../components/PreviewShop";
+import MainPreviewShop from "../components/MainPreviewShop";
 
 export default function Home() {
   return (
@@ -15,7 +16,9 @@ export default function Home() {
         <Locations />
         <Locations />
       </div>
-      <PreviewShop />
+      <PreviewShop>
+        <MainPreviewShop />
+      </PreviewShop>
       <Features />
     </>
   );
