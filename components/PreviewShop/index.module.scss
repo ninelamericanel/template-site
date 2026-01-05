@@ -1,0 +1,12 @@
+@import "../../styles/mixins";
+
+.section {
+  padding: 0 10vw;
+}
+
+.title {
+  text-align: end;
+  @include h2;
+  //todo!
+  padding: 130px 0;
+}

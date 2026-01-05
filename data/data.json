@@ -1,0 +1,203 @@
+[
+    {
+      "name": "Одина Фиалка",
+      "id": "odina-fialka-001",
+      "realese": "2024-01-01",
+      "collection": "base",
+      "priceInfo": {
+        "price": 1500,
+        "currency": "RUB"
+      },
+      "information": {
+        "allergen": ["глютен", "молоко", "яйца"],
+        "ingredient": [
+          "мука пшеничная",
+          "сахар",
+          "масло сливочное",
+          "яйца",
+          "ваниль",
+          "фиалка (экстракт)"
+        ],
+        "storage": "Хранить при температуре от +2 °C до +6 °C. Срок годности — 72 часа."
+      },
+      "description": "Нежный торт с ароматом фиалки, сочетающий воздушную текстуру и утончённый цветочный вкус.",
+      "weight": "1,2 кг",
+      "nutritional": {
+        "energy": {
+          "kj": 1800,
+          "kcal": 430
+        },
+        "carbohydrate": "45 г",
+        "sugars": "30 г",
+        "salt": "0,3 г",
+        "fat": "22 г",
+        "saturatedFat": "12 г",
+        "protein": "6 г"
+      },
+      "photos": [
+        "https://example.com/photos/odina-fialka-1.jpg",
+        "https://example.com/photos/odina-fialka-2.jpg"
+      ]
+    },
+    {
+      "name": "Испахан",
+      "id": "ispan-001",
+      "realese": "2024-01-01",
+      "collection": "base",
+      "priceInfo": {
+        "price": 1500,
+        "currency": "RUB"
+      },
+      "information": {
+        "allergen": ["глютен", "молоко", "орехи"],
+        "ingredient": [
+          "мука пшеничная",
+          "сахар",
+          "масло сливочное",
+          "миндаль",
+          "ваниль",
+          "сливки"
+        ],
+        "storage": "Хранить при температуре от +2 °C до +6 °C. Срок годности — 72 часа."
+      },
+      "description": "Классический торт с миндальными нотками и нежной сливочной прослойкой.",
+      "weight": "1,3 кг",
+      "nutritional": {
+        "energy": {
+          "kj": 1950,
+          "kcal": 465
+        },
+        "carbohydrate": "48 г",
+        "sugars": "32 г",
+        "salt": "0,4 г",
+        "fat": "25 г",
+        "saturatedFat": "14 г",
+        "protein": "7 г"
+      },
+      "photos": [
+        "https://example.com/photos/ispan-1.jpg",
+        "https://example.com/photos/ispan-2.jpg"
+      ]
+    },
+    {
+      "name": "Мак‑Лимон",
+      "id": "mak-limon-001",
+      "realese": "2024-01-01",
+      "collection": "base",
+      "priceInfo": {
+        "price": 1500,
+        "currency": "RUB"
+      },
+      "information": {
+        "allergen": ["глютен", "молоко", "яйца", "цитрусовые"],
+        "ingredient": [
+          "мука пшеничная",
+          "сахар",
+          "масло сливочное",
+          "яйца",
+          "мак",
+          "лимонный сок",
+          "цедра лимона"
+        ],
+        "storage": "Хранить при температуре от +2 °C до +6 °C. Срок годности — 72 часа."
+      },
+      "description": "Освежающий торт с ярким лимонным вкусом и хрустящими вкраплениями мака.",
+      "weight": "1,1 кг",
+      "nutritional": {
+        "energy": {
+          "kj": 1750,
+          "kcal": 415
+        },
+        "carbohydrate": "42 г",
+        "sugars": "28 г",
+        "salt": "0,2 г",
+        "fat": "20 г",
+        "saturatedFat": "10 г",
+        "protein": "5 г"
+      },
+      "photos": [
+        "https://example.com/photos/mak-limon-1.jpg",
+        "https://example.com/photos/mak-limon-2.jpg"
+      ]
+    },
+    {
+      "name": "Мария‑Антуанетта: Испахан",
+      "id": "marie-antoinette-ispan-001",
+      "realese": "2024-01-01",
+      "collection": "special",
+      "priceInfo": {
+        "price": 700,
+        "currency": "RUB"
+      },
+      "information": {
+        "allergen": ["глютен", "молоко", "яйца", "миндаль", "личи"],
+        "ingredient": [
+          "миндальный бисквит",
+          "розовый крем",
+          "ягоды личи",
+          "свежая малина",
+          "сахар",
+          "яйца",
+          "масло сливочное"
+        ],
+        "storage": "Хранить при температуре от +2 °C до +6 °C. Срок годности — 48 часов."
+      },
+      "description": "Торт в форме сердца из миндального бисквита с нежным розовым кремом, ягодами личи и свежей малиной. Романтичный десерт, говорящий о любви без слов.",
+      "weight": "1,0 кг",
+      "nutritional": {
+        "energy": {
+          "kj": 1850,
+          "kcal": 440
+        },
+        "carbohydrate": "46 г",
+        "sugars": "31 г",
+        "salt": "0,3 г",
+        "fat": "23 г",
+        "saturatedFat": "13 г",
+        "protein": "6 г"
+      },
+      "photos": [
+        "https://example.com/photos/marie-antoinette-ispan-1.jpg",
+        "https://example.com/photos/marie-antoinette-ispan-2.jpg"
+      ]
+    },
+    {
+      "name": "Мария‑Антуанетта: Фисташка",
+      "id": "marie-antoinette- pistachio-001",
+      "realese": "2024-01-01",
+      "collection": "special",
+      "priceInfo": {
+        "price": 700,
+        "currency": "RUB"
+      },
+      "information": {
+        "allergen": ["глютен", "молоко", "яйца", "фисташки"],
+        "ingredient": [
+          "бисквит",
+          "фисташковый крем",
+          "цельные фисташки",
+          "сахар",
+          "яйца",
+          "масло сливочное",
+          "экстракт фисташки"
+        ],
+        "storage": "Хранить при температуре от +2 °C до +6 °C. Срок годности — 48 часов."
+      },
+      "description": "Изысканный торт с насыщенным фисташковым вкусом и хрустящими кусочками цельных фисташек. Нежная текстура и благородный аромат.",
+      "weight": "1,1 кг",
+      "nutritional": {
+        "energy": {
+          "kj": 1900,
+          "kcal": 455
+        },
+        "carbohydrate": "47 г",
+        "sugars": "32 г",
+        "salt": "0,3 г",
+        "fat": "24 г",
+        "saturatedFat": "14 г",
+        "protein": "7 г"
+      },
+      "photos": [
+        "https://example.com/photos/marie-antoinette-pistachio-1.jpg",
+        "https://example.com/photos/marie-antoinette-pistachio-2.jpg"
+      ]
