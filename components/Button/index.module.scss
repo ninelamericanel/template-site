@@ -22,4 +22,14 @@
 
 .link {
   color: black;
+  cursor: pointer;
+  @include p;
+  padding: 5px;
+  will-change: border;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  transition: 0.3s;
+
+  &:hover {
+    border-bottom: 1px solid black;
+  }
 }
