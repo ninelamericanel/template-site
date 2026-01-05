@@ -2,6 +2,7 @@
 
 import { ICake } from "../../data/data-shop";
 import Card from "../Card";
+import styles from "./index.module.scss";
 
 interface IProps {
   data: ICake[];
@@ -9,8 +10,8 @@ interface IProps {
 const ShopList = ({ data }: IProps) => {
   const renderData = data?.map((item, index) => {
     return (
-      <div>
-        <Card />
+      <div className={styles.list}>
+        <Card data={item} />
       </div>
     );
   });
