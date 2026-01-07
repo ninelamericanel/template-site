@@ -36,12 +36,7 @@ export default function Hero() {
           >
             {data.h1}
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="extraText"
-          >
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
             {parse(data.desc)}
           </motion.p>
         </div>

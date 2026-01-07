@@ -1,7 +1,21 @@
 .card {
+  line-height: 150%;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.img {
+  // todo
+  width: 270px;
+  height: 270px;
+  background-color: red;
 }
 
 .desc {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
 }

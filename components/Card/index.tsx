@@ -1,16 +1,27 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./index.module.scss";
+import { ICake } from "../../data/data-shop";
+// import bg from "../../src/assets/mainBg.png";
 
-const Card = ({ name, price, img }) => {
+interface IProps {
+  data: ICake;
+}
+
+const Card = ({ data }: IProps) => {
+  console.log(data, "card");
+  const { photos, name, priceInfo } = data;
+  const { price, currency } = priceInfo;
+  console.log(photos);
   return (
     <div className={styles.card}>
-      <div>
-        <Image src={img} />
-      </div>
+      <div className={styles.img}>{photos?.length ? <Image src={""} alt={name} fill /> : null}</div>
       <div className={styles.desc}>
         <p>{name}</p>
-        <p>{price}</p>
+        <p>
+          {price} {currency}
+        </p>
       </div>
     </div>
   );

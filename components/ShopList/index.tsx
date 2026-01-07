@@ -9,13 +9,9 @@ interface IProps {
 }
 const ShopList = ({ data }: IProps) => {
   const renderData = data?.map((item, index) => {
-    return (
-      <div className={styles.list}>
-        <Card data={item} />
-      </div>
-    );
+    return <Card data={item} />;
   });
-  return renderData;
+  return <div className={styles.list}>{renderData}</div>;
 };
 
 export default ShopList;
