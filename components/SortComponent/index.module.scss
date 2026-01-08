@@ -1,0 +1,17 @@
+@import "../../styles/mixins";
+
+.block {
+  border: 1px solid black;
+  display: flex;
+  column-gap: 6vw;
+  @include padding;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+}
+
+.item {
+  padding: 0 3vw 0 0;
+
+  @include borderHover;
+  @include borderRightHover;
+}
