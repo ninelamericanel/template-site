@@ -39,7 +39,8 @@ export default function bHeader() {
             transform: "translateX(-50%)",
           }}
         >
-          <LogoIcon />
+          <h1>ЛОГОТИП</h1>
+          {/* <LogoIcon /> */}
         </motion.div>
       </div>
 
