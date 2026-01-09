@@ -1,1 +1,5 @@
-# ladureeweb
+# проект создан исключительно в учебных целях (далее пет-проект)
+
+# Меню https://laduree-russia.ru/
+
+# https://laduree.com/en
