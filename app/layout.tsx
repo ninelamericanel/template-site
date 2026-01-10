@@ -2,6 +2,7 @@ import "../styles/global.scss";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer";
 import { Metadata } from "next";
+import { ReduxProvider } from "../src/state/provider";
 
 // todo: добавить картинки для превью при отправке ссылки на сайт. Продумать наименования метаданных
 // todo: возможно создать объект с повторяющимися строками для метаданных
@@ -36,9 +37,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <ReduxProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </ReduxProvider>
       </body>
     </html>
   );
