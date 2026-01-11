@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
-import { LogoIcon } from "../../src/assets/svg/LogoIcon";
 import styles from "../Header/Header.module.scss";
 
 export default function bHeader() {
@@ -39,8 +38,7 @@ export default function bHeader() {
             transform: "translateX(-50%)",
           }}
         >
-          <h1>ЛОГОТИП</h1>
-          {/* <LogoIcon /> */}
+          <h1>Логотип</h1>
         </motion.div>
       </div>
 
@@ -51,7 +49,7 @@ export default function bHeader() {
         }}
       >
         <div className={styles.secondHeader}>
-          <LogoIcon />
+          <h1>Логотип</h1>
           <nav className={styles.nav}>
             <a href="#">Главная</a>
             <a href="#">О нас</a>

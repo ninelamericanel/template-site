@@ -10,10 +10,8 @@ interface IProps {
 }
 
 const Card = ({ data }: IProps) => {
-  console.log(data, "card");
   const { photos, name, priceInfo } = data;
   const { price, currency } = priceInfo;
-  console.log(photos);
   return (
     <div className={styles.card}>
       <div className={styles.img}>{photos?.length ? <Image src={""} alt={name} fill /> : null}</div>

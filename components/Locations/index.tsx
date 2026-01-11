@@ -16,9 +16,14 @@ const data = [
     description: parse(
       "Интерьер La&nbsp;Dur&eacute;e вдохновлён театральной эстетикой &laquo;Русских сезонов&raquo; Сергея Дягилева и&nbsp;эскизами Льва Бакста. Французская лёгкость и&nbsp;русское вдохновение сплетаются здесь в&nbsp;пространстве, где каждый десерт&nbsp;&mdash; маленькое представление."
     ),
-    img: location1,
+    // img: location1,
   },
-  { id: "block2", title: parse("Бутик на&nbsp;Малой Бронной"), description: "", img: location2 },
+  {
+    id: "block2",
+    title: parse("Бутик на&nbsp;Малой Бронной"),
+    description: "",
+    // img: location2
+  },
 ];
 
 const Location = () => {
@@ -27,7 +32,7 @@ const Location = () => {
   return (
     <section className={styles.section} ref={sectionRef}>
       <div className={styles.imageWrapper}>
-        <Image src={data[0].img} alt={data[0].title} fill className={styles.img} />
+        {/* <Image src={data[0].img} alt={data[0].title} fill className={styles.img} /> */}
       </div>
       <div className={styles.content}>
         <motion.div
