@@ -14,7 +14,12 @@ const Card = ({ data }: IProps) => {
   const { price, currency } = priceInfo;
   return (
     <div className={styles.card}>
-      <div className={styles.img}>{photos?.length ? <Image src={""} alt={name} fill /> : null}</div>
+      <div className={styles.img}>
+        {photos?.length ? (
+          // <Image src={""} alt={name} fill />
+          <div />
+        ) : null}
+      </div>
       <div className={styles.desc}>
         <p>{name}</p>
         <p>

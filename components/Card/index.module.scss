@@ -7,10 +7,12 @@
 }
 
 .img {
+  position: relative;
   // todo
   width: 270px;
   height: 270px;
-  background-color: red;
+
+  background-color: rgba(71%, 65%, 80%, 1);
 }
 
 .desc {
