@@ -1,6 +1,8 @@
 //TODO: вынести в переменные числовые значения
 @import "../../styles/_mixins.scss";
 
+//todo
+
 .button {
   padding: 24px 0;
   border-radius: 8px;
@@ -31,5 +33,16 @@
 
   &:hover {
     border-bottom: 1px solid black;
+  }
+}
+
+.link.light {
+  padding: 24px 0;
+  border-radius: 8px;
+  width: 250px;
+  text-align: center;
+
+  &:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
   }
 }

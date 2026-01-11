@@ -1,53 +1,52 @@
 .section {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 
-    position: relative;
+  position: relative;
 }
 
 .bg {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    position: absolute;
-    z-index: -1;
+  position: absolute;
+  z-index: -1;
 
-    object-fit: cover;
-    object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .textContent {
-    padding-top: 60px;
+  padding-top: 60px;
 
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
 
-    color: white;
+  color: white;
 }
 
 .textContent * {
-    text-align: center;
+  text-align: center;
 }
 
 .textContent h1 {
-    font-weight: bold;
-    font-size: 64px;
+  font-weight: bold;
+  font-size: 64px;
 }
 
 .textContent p {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .button {
-    display: flex;
-    justify-content: center;
-
+  display: flex;
+  justify-content: center;
 }

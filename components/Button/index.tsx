@@ -11,11 +11,11 @@ const Button = ({ type, href, desc, theme }: IButton) => {
   // "A man, a plan, a canal, Panama!"
 
   return type === "link" ? (
-    <a href={href} className={styles.link}>
+    <a href={href} className={`${theme ? styles[theme] : ""} ${styles.link}`}>
       {desc}
     </a>
   ) : (
-    <div className={`${styles[theme]} ${styles.button}`}>
+    <div className={`${theme ? styles[theme] : ""} ${styles.button}`}>
       <button type={type}>{desc}</button>
     </div>
   );
