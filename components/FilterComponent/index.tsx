@@ -36,7 +36,7 @@ export const FilterComponent = ({ values }: ISort) => {
     },
     { value: "cake", label: "Торты" },
     { value: "chocolate", label: "Шоколад" },
-    { value: "tea", label: "Чай" },
+    { value: "typeTea", label: "Чай" },
   ];
 
   const selectTab = (item: ICategory) => {
@@ -52,21 +52,16 @@ export const FilterComponent = ({ values }: ISort) => {
     );
   };
 
-  console.log(category, subfilters);
-
   if (category.value !== "all") {
     return (
       <div className={styles.block}>
         {activeSubfilter.map((item) => {
-          const subfilter = subfilters[item]
-          return (
-            <p className={styles.item}>{subfilters[item]name}</p>
-          )
+          const subfilter = subfilters[item];
+          if (subfilter.name === "price") {
+          }
+
+          return <p className={styles.item}>{subfilter.name}</p>;
         })}
-        {/* <p className={styles.item}>{subfilters.color.name}</p>
-        <p className={styles.item}>{subfilters.teaType.name}</p>
-        <p className={styles.item}>{subfilters.price.name}</p>
-        <p className={styles.item}>{subfilters.count.name}</p> */}
         <p className={styles.back} onClick={resetTab}>
           &lt;
         </p>

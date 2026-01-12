@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import { fetchProducts } from "../../api/fetchProducts";
 import ShopList from "../../components/ShopList";
 import { TCategory } from "../../src/state/filterSlice";
+import { ICake } from "../../data/data-shop";
 
 const data = {
   h1A: "Сладкие моменты",
@@ -22,8 +23,9 @@ const checkComponent = (array) => {
 };
 
 export default async function Store() {
-  const products = await fetchProducts();
+  const products = (await fetchProducts()) as ICake[];
   const values = [...checkComponent(products)] as TCategory[];
+  console.log(products, "products");
   return (
     <section className={styles.section}>
       <div className={styles.titleBlock}>
@@ -31,9 +33,9 @@ export default async function Store() {
         <h1 className={styles.title}>{parse(data.h1B)}</h1>
       </div>
       <FilterComponent values={values} />
-      {/* <div className={styles.list}>
+      <div className={styles.list}>
         <ShopList data={products}></ShopList>
-      </div> */}
+      </div>
     </section>
   );
 }

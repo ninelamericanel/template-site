@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export type TCategory = "all" | "cake" | "chocolate" | "macarons" | "typeTea";
+export type TSubCategory = "price" | "color" | "count" | "typeTea";
 type TColor = "lemon" | "saltedCaramel" | "vanilla";
 type TTea = "green" | "black";
 
@@ -10,19 +11,19 @@ export interface ICategory {
 }
 
 export type TSubfilterValue =
-  | { name: "color"; value: TColor[] | [] }
-  | { name: "teaType"; value: TTea[] | [] }
-  | { name: "count"; value: number[] | [] }
-  | { name: "price"; value: { min: 0; max: 0 } };
+  | { name: string; value: TColor[] | [] }
+  | { name: string; value: TTea[] | [] }
+  | { name: string; value: number[] | [] }
+  | { name: string; value: { min: 0; max: 0 } };
 
 export type TSubfilters = {
-  [K in TCategory]: TSubfilterValue;
+  [K in TSubCategory]: TSubfilterValue;
 };
 
 export interface IFilterState {
   items: string[];
   category: ICategory;
-  activeSubfilter: ICategory[];
+  activeSubfilter: TCategory[];
   subfilters: TSubfilters;
 }
 
@@ -36,7 +37,7 @@ const initialState: IFilterState = {
   subfilters: {
     color: { name: "Цвет", value: [] },
     price: { name: "Цена", value: { min: 0, max: 0 } },
-    teaType: { name: "Сорт чая", value: [] },
+    typeTea: { name: "Сорт чая", value: [] },
     count: { name: "Количество", value: [] },
   },
 };
@@ -63,7 +64,7 @@ function getActiveSubFilters(filterValue) {
   const map = {
     macarons: ["color", "count", "price"],
     cake: ["price"],
-    tea: ["teaType", "price"],
+    typeTea: ["typeTea", "price"],
     chocolate: ["price"],
     all: [],
   };
