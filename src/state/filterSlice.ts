@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { fetchProducts } from "../../api/fetchProducts";
+import { ICake } from "../../data/data-shop";
 
 export type TCategory = "all" | "cake" | "chocolate" | "macarons" | "typeTea";
 export type TSubCategory = "price" | "color" | "count" | "typeTea";
@@ -21,7 +23,8 @@ export type TSubfilters = {
 };
 
 export interface IFilterState {
-  items: string[];
+  items: ICake[];
+  filteredItems: ICake[];
   category: ICategory;
   activeSubfilter: TCategory[];
   subfilters: TSubfilters;
@@ -29,6 +32,7 @@ export interface IFilterState {
 
 const initialState: IFilterState = {
   items: [], // ваши данные
+  filteredItems: [],
   category: {
     value: "all",
     label: "Все категории",
@@ -41,6 +45,11 @@ const initialState: IFilterState = {
     count: { name: "Количество", value: [] },
   },
 };
+
+export const fetchData = createAsyncThunk("filters/fetchData", async () => {
+  const products = (await fetchProducts()) as ICake[];
+  return products;
+});
 
 const filterSlice = createSlice({
   name: "filters",
@@ -56,6 +65,22 @@ const filterSlice = createSlice({
       const { key, value } = action.payload;
       state.subfilters[key] = value;
     },
+    filteredData: (state, action) => {
+      const {
+        category,
+        subfilters: { color, price, typeTea, count },
+      } = state;
+
+      // const filteredArray = action.payload.filter((item) => )
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchData.pending, (state) => {})
+      .addCase(fetchData.fulfilled, (state, action) => {
+        state.items = action.payload;
+      })
+      .addCase(fetchData.rejected, (state) => {});
   },
 });
 
@@ -88,5 +113,23 @@ function resetInactiveSubFilters(state, activeCategory) {
   return state.subfilters;
 }
 
-export const { setCategory, setSubFilters } = filterSlice.actions;
+function filterItems(
+  array,
+  typeFilter,
+  categoryFilters,
+  typeKey = "type",
+  categoryKey = "category"
+) {
+  // 1‑й уровень: фильтрация по типу товара
+  const typeFiltered = typeFilter ? array.filter((item) => item[typeKey] === typeFilter) : array;
+
+  // 2‑й уровень: фильтрация по спискам категорий
+  if (!categoryFilters || categoryFilters.length === 0) {
+    return typeFiltered;
+  }
+
+  return typeFiltered.filter((item) => categoryFilters.includes(item[categoryKey]));
+}
+
+export const { setCategory, setSubFilters, filteredData, setItems } = filterSlice.actions;
 export default filterSlice.reducer;

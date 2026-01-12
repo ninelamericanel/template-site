@@ -1,10 +1,14 @@
 import parse from "html-react-parser";
+import { useDispatch } from "react-redux";
 import { FilterComponent } from "../../components/FilterComponent";
 import styles from "./index.module.scss";
 import { fetchProducts } from "../../api/fetchProducts";
 import ShopList from "../../components/ShopList";
-import { TCategory } from "../../src/state/filterSlice";
+import { TCategory, setItems } from "../../src/state/filterSlice";
 import { ICake } from "../../data/data-shop";
+import { useSelector } from "react-redux";
+import { RootState } from "../../src/state/store";
+import { useEffect } from "react";
 
 const data = {
   h1A: "Сладкие моменты",
@@ -22,19 +26,34 @@ const checkComponent = (array) => {
   return new Set(arr);
 };
 
+function filterItems(
+  array,
+  typeFilter,
+  categoryFilters,
+  typeKey = "type",
+  categoryKey = "category"
+) {
+  // 1‑й уровень: фильтрация по типу товара
+  const typeFiltered = typeFilter ? array.filter((item) => item[typeKey] === typeFilter) : array;
+
+  // 2‑й уровень: фильтрация по спискам категорий
+  if (!categoryFilters || categoryFilters.length === 0) {
+    return typeFiltered;
+  }
+
+  return typeFiltered.filter((item) => categoryFilters.includes(item[categoryKey]));
+}
+
 export default async function Store() {
-  const products = (await fetchProducts()) as ICake[];
-  const values = [...checkComponent(products)] as TCategory[];
-  console.log(products, "products");
   return (
     <section className={styles.section}>
       <div className={styles.titleBlock}>
         <h1 className={styles.title}>{parse(data.h1A)}</h1>
         <h1 className={styles.title}>{parse(data.h1B)}</h1>
       </div>
-      <FilterComponent values={values} />
+      <FilterComponent />
       <div className={styles.list}>
-        <ShopList data={products}></ShopList>
+        <ShopList />
       </div>
     </section>
   );

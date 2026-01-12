@@ -26,7 +26,7 @@ interface IFilterMacarons {
   count: number;
 }
 
-export const FilterComponent = ({ values }: ISort) => {
+export const FilterComponent = () => {
   const { category, subfilters, activeSubfilter } = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
   const filters: ICategory[] = [
