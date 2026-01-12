@@ -7,6 +7,10 @@
   margin-top: 10vw;
   margin-bottom: 5vw;
   @include padding;
+
+  @include mobile {
+    margin-top: 15vw;
+  }
 }
 
 .title {

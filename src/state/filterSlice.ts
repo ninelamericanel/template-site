@@ -1,30 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export type TCategory = "all" | "cake" | "chocolate" | "macarons" | "tea";
+export type TCategory = "all" | "cake" | "chocolate" | "macarons" | "typeTea";
 type TColor = "lemon" | "saltedCaramel" | "vanilla";
 type TTea = "green" | "black";
 
+export interface ICategory {
+  value: TCategory;
+  label: string;
+}
+
+export type TSubfilterValue =
+  | { name: "color"; value: TColor[] | [] }
+  | { name: "teaType"; value: TTea[] | [] }
+  | { name: "count"; value: number[] | [] }
+  | { name: "price"; value: { min: 0; max: 0 } };
+
+export type TSubfilters = {
+  [K in TCategory]: TSubfilterValue;
+};
+
 export interface IFilterState {
   items: string[];
-  category: TCategory; // текущее значение фильтра
-  activeSubfilter: TCategory[];
-  subfilters: {
-    color: TColor[];
-    price: { min: 0; max: 0 };
-    teaType: TTea[];
-    count: number[];
-  };
+  category: ICategory;
+  activeSubfilter: ICategory[];
+  subfilters: TSubfilters;
 }
 
 const initialState: IFilterState = {
   items: [], // ваши данные
-  category: "all", // текущее значение фильтра
+  category: {
+    value: "all",
+    label: "Все категории",
+  }, // текущее значение фильтра
   activeSubfilter: [],
   subfilters: {
-    color: [],
-    price: { min: 0, max: 0 },
-    teaType: [],
-    count: [],
+    color: { name: "Цвет", value: [] },
+    price: { name: "Цена", value: { min: 0, max: 0 } },
+    teaType: { name: "Сорт чая", value: [] },
+    count: { name: "Количество", value: [] },
   },
 };
 
@@ -34,8 +47,7 @@ const filterSlice = createSlice({
   reducers: {
     setCategory: (state, action) => {
       state.category = action.payload;
-      console.log(action);
-      state.activeSubfilter = getActiveSubFilters(action.payload);
+      state.activeSubfilter = getActiveSubFilters(action.payload.value);
 
       // state.subfilters = resetInactiveSubFilters(state, action.payload);
     },
@@ -47,10 +59,11 @@ const filterSlice = createSlice({
 });
 
 function getActiveSubFilters(filterValue) {
+  console.log(filterValue, "filtered");
   const map = {
     macarons: ["color", "count", "price"],
     cake: ["price"],
-    tea: ["type", "price"],
+    tea: ["teaType", "price"],
     chocolate: ["price"],
     all: [],
   };

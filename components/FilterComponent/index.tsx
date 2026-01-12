@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
-import { IFilterState, TCategory, setCategory } from "../../src/state/filterSlice";
+import { ICategory, IFilterState, TCategory, setCategory } from "../../src/state/filterSlice";
 import styles from "./index.module.scss";
 import { RootState } from "../../src/state/store";
 
@@ -26,15 +26,10 @@ interface IFilterMacarons {
   count: number;
 }
 
-interface IFilter {
-  value: TCategory;
-  label: string;
-}
-
 export const FilterComponent = ({ values }: ISort) => {
   const { category, subfilters, activeSubfilter } = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
-  const filters: IFilter[] = [
+  const filters: ICategory[] = [
     {
       value: "all",
       label: "Все категории",
@@ -44,9 +39,40 @@ export const FilterComponent = ({ values }: ISort) => {
     { value: "tea", label: "Чай" },
   ];
 
-  const selectTab = (item: IFilter) => {
+  const selectTab = (item: ICategory) => {
     dispatch(setCategory(item));
   };
+
+  const resetTab = () => {
+    dispatch(
+      setCategory({
+        value: "all",
+        label: "Все категории",
+      })
+    );
+  };
+
+  console.log(category, subfilters);
+
+  if (category.value !== "all") {
+    return (
+      <div className={styles.block}>
+        {activeSubfilter.map((item) => {
+          const subfilter = subfilters[item]
+          return (
+            <p className={styles.item}>{subfilters[item]name}</p>
+          )
+        })}
+        {/* <p className={styles.item}>{subfilters.color.name}</p>
+        <p className={styles.item}>{subfilters.teaType.name}</p>
+        <p className={styles.item}>{subfilters.price.name}</p>
+        <p className={styles.item}>{subfilters.count.name}</p> */}
+        <p className={styles.back} onClick={resetTab}>
+          &lt;
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.block}>

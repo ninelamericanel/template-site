@@ -15,3 +15,8 @@
   @include borderHover;
   @include borderRightHover;
 }
+
+.back {
+  margin-left: auto;
+  cursor: pointer;
+}
