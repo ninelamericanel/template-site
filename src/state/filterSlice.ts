@@ -81,6 +81,10 @@ const filterSlice = createSlice({
         subfilters: { color, price, typeTea, count },
       } = state;
     },
+    resetFilter: (state) => {
+      state.filteredItems = state.items;
+      state.category = { value: "all", label: "Все категории" };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -142,39 +146,5 @@ function applySecondLevelFilter(state) {
   state.filteredProducts = result;
 }
 
-function resetInactiveSubFilters(state, activeCategory) {
-  const activeKeys = getActiveSubFilters(activeCategory);
-  Object.keys(state.subFilters).forEach((key) => {
-    if (!activeKeys.includes(key)) {
-      // Сброс до начальных значений
-      if (key === "price") {
-        state.subfilters[key] = { min: 0, max: 1000 };
-      } else {
-        state.subfilters[key] = [];
-      }
-    }
-  });
-
-  return state.subfilters;
-}
-
-function filterItems(
-  array,
-  typeFilter,
-  categoryFilters,
-  typeKey = "type",
-  categoryKey = "category"
-) {
-  // 1‑й уровень: фильтрация по типу товара
-  const typeFiltered = typeFilter ? array.filter((item) => item[typeKey] === typeFilter) : array;
-
-  // 2‑й уровень: фильтрация по спискам категорий
-  if (!categoryFilters || categoryFilters.length === 0) {
-    return typeFiltered;
-  }
-
-  return typeFiltered.filter((item) => categoryFilters.includes(item[categoryKey]));
-}
-
-export const { setCategory, setSubFilters, filteredData } = filterSlice.actions;
+export const { setCategory, setSubFilters, filteredData, resetFilter } = filterSlice.actions;
 export default filterSlice.reducer;

@@ -1,7 +1,13 @@
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
-import { ICategory, IFilterState, TCategory, setCategory } from "../../src/state/filterSlice";
+import {
+  ICategory,
+  IFilterState,
+  TCategory,
+  resetFilter,
+  setCategory,
+} from "../../src/state/filterSlice";
 import styles from "./index.module.scss";
 import { RootState } from "../../src/state/store";
 
@@ -44,12 +50,7 @@ export const FilterComponent = () => {
   };
 
   const resetTab = () => {
-    dispatch(
-      setCategory({
-        value: "all",
-        label: "Все категории",
-      })
-    );
+    dispatch(resetFilter());
   };
 
   if (category.value !== "all") {
