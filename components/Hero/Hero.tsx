@@ -3,29 +3,26 @@ import { motion } from "framer-motion";
 import parse from "html-react-parser";
 import styles from "./index.module.scss";
 import Button from "../Button";
-import Image from "next/image";
-import bg from "../../src/assets/mainBg.png";
 
 const data = {
   h1: "Laduree Russia",
   desc: `Ресторан Ladur&eacute;e &agrave;-la Russe`,
   buttonDesc: "Перейти в магазин",
   link: "/shop",
-  bg,
 };
 
 export default function Hero() {
   return (
     <section className={`${styles.section}`}>
       {/* <motion.div initial={{ scale: 0 }} animate={{ scale: 1.2 }}> */}
-      <Image
+      {/* <Image
         src={data.bg}
         className={styles.bg}
         alt="macarons background"
         width={100}
         height={100}
         sizes="100vw"
-      />
+      /> */}
       {/* </motion.div> */}
       <div className={styles.content}>
         <div className={styles.textContent}>
