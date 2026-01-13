@@ -8,13 +8,13 @@ import { fetchData } from "../../src/state/filterSlice";
 import { RootState } from "../../src/state/store";
 
 const ShopList = () => {
-  const { items } = useSelector((state: RootState) => state.filter);
+  const { filteredItems: items } = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchData());
   }, []);
 
-  console.log(items, "shopList");
+  console.log(items, "ShopList");
 
   const renderData = items?.map((item, index) => {
     return <Card data={item} />;
