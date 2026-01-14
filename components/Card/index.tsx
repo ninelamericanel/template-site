@@ -10,8 +10,7 @@ interface IProps {
 }
 
 const Card = ({ data }: IProps) => {
-  const { photos, name, priceInfo } = data;
-  const { price, currency } = priceInfo;
+  const { photos, name, price } = data;
   return (
     <div className={styles.card}>
       <div className={styles.img}>
@@ -22,9 +21,7 @@ const Card = ({ data }: IProps) => {
       </div>
       <div className={styles.desc}>
         <p>{name}</p>
-        <p>
-          {price} {currency}
-        </p>
+        <p>{price} RUB</p>
       </div>
     </div>
   );
