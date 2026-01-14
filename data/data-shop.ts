@@ -3,10 +3,7 @@ export interface ICake {
   id: string;
   realese: string;
   collection: "base" | "holidays" | "special";
-  priceInfo: {
-    price: number;
-    currency: string;
-  };
+  price: number;
   information: {
     allergen: string[];
     ingredient: string[];
@@ -45,10 +42,7 @@ export const cakes: ICake[] = [
     id: "odina-fialka-001",
     realese: "2024-01-01",
     collection: "base",
-    priceInfo: {
-      price: 1500,
-      currency: "RUB",
-    },
+    price: 1500,
     information: {
       allergen: ["глютен", "молоко", "яйца"],
       ingredient: [
@@ -87,10 +81,7 @@ export const cakes: ICake[] = [
     id: "ispan-001",
     realese: "2024-01-01",
     collection: "base",
-    priceInfo: {
-      price: 1500,
-      currency: "RUB",
-    },
+    price: 1500,
     information: {
       allergen: ["глютен", "молоко", "орехи"],
       ingredient: ["мука пшеничная", "сахар", "масло сливочное", "миндаль", "ваниль", "сливки"],
@@ -118,10 +109,7 @@ export const cakes: ICake[] = [
     id: "mak-limon-001",
     realese: "2024-01-01",
     collection: "base",
-    priceInfo: {
-      price: 1500,
-      currency: "RUB",
-    },
+    price: 1500,
     information: {
       allergen: ["глютен", "молоко", "яйца", "цитрусовые"],
       ingredient: [
@@ -160,10 +148,7 @@ export const cakes: ICake[] = [
     id: "marie-antoinette-ispan-001",
     realese: "2024-01-01",
     collection: "special",
-    priceInfo: {
-      price: 700,
-      currency: "RUB",
-    },
+    price: 700,
     information: {
       allergen: ["глютен", "молоко", "яйца", "миндаль", "личи"],
       ingredient: [
@@ -203,10 +188,7 @@ export const cakes: ICake[] = [
     id: "marie-antoinette- pistachio-001",
     realese: "2024-01-01",
     collection: "special",
-    priceInfo: {
-      price: 700,
-      currency: "RUB",
-    },
+    price: 700,
     information: {
       allergen: ["глютен", "молоко", "яйца", "фисташки"],
       ingredient: [
@@ -246,10 +228,7 @@ export const cakes: ICake[] = [
     id: "marie-antoinette-blackcurrant-violet-001",
     realese: "2024-01-01",
     collection: "special",
-    priceInfo: {
-      price: 700,
-      currency: "RUB",
-    },
+    price: 700,
     information: {
       allergen: ["глютен", "молоко", "яйца", "ягоды"],
       ingredient: [
@@ -289,10 +268,7 @@ export const cakes: ICake[] = [
     id: "pompadour-special-001",
     realese: "2024-01-01",
     collection: "special",
-    priceInfo: {
-      price: 9500,
-      currency: "RUB",
-    },
+    price: 9500,
     information: {
       allergen: ["глютен", "яйца", "фундук", "молоко"],
       ingredient: [
@@ -333,10 +309,7 @@ export const cakes: ICake[] = [
     id: "marie-antoinette-special-001",
     realese: "2024-01-01",
     collection: "special",
-    priceInfo: {
-      price: 12000,
-      currency: "RUB",
-    },
+    price: 12000,
     information: {
       allergen: ["глютен", "яйца", "молоко", "шоколад"],
       ingredient: [
@@ -377,10 +350,7 @@ export const cakes: ICake[] = [
     id: "arabesque-special-001",
     realese: "2024-01-01",
     collection: "special",
-    priceInfo: {
-      price: 4500,
-      currency: "RUB",
-    },
+    price: 4500,
     information: {
       allergen: ["глютен", "молоко", "арахис"],
       ingredient: [
@@ -419,10 +389,7 @@ export const cakes: ICake[] = [
     id: "arabesque-special-001",
     realese: "2024-01-01",
     collection: "special",
-    priceInfo: {
-      price: 4500,
-      currency: "RUB",
-    },
+    price: 4500,
     information: {
       allergen: ["глютен", "молоко", "арахис"],
       ingredient: [
@@ -461,10 +428,7 @@ export const cakes: ICake[] = [
     id: "arabesque-special-001",
     realese: "2024-01-01",
     collection: "special",
-    priceInfo: {
-      price: 4500,
-      currency: "RUB",
-    },
+    price: 4500,
     information: {
       allergen: ["глютен", "молоко", "арахис"],
       ingredient: [
@@ -503,10 +467,7 @@ export const cakes: ICake[] = [
     id: "arabesque-special-001",
     realese: "2024-01-01",
     collection: "special",
-    priceInfo: {
-      price: 4500,
-      currency: "RUB",
-    },
+    price: 4500,
     information: {
       allergen: ["глютен", "молоко", "арахис"],
       ingredient: [
