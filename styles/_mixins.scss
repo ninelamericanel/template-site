@@ -34,6 +34,10 @@
   padding: 0 10vw;
 }
 
+@mixin padding-between-section {
+  margin: 10vw 0;
+}
+
 // todo: продумать размеры шрифтов
 // может бытб лучше опираться на шрифт из body (rem)
 // установить для body адаптивный шрифт

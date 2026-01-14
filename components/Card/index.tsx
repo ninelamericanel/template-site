@@ -1,9 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./index.module.scss";
 import { ICake } from "../../data/data-shop";
-// import bg from "../../src/assets/mainBg.png";
 
 interface IProps {
   data: ICake;

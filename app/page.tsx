@@ -5,6 +5,7 @@ import Locations from "../components/Locations";
 import Features from "../components/Features";
 import PreviewShop from "../components/PreviewShop";
 import MainPreviewShop from "../components/MainPreviewShop";
+import NewsSection from "../components/NewsSection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <PreviewShop>
         <MainPreviewShop />
       </PreviewShop>
+      <NewsSection />
       <Features />
     </>
   );

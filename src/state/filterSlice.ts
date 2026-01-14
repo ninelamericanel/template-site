@@ -18,9 +18,7 @@ export type TSubfilterValue =
   | { name: string; value: number[] | [] }
   | { name: string; value: { min: 0; max: 0 } };
 
-export type TSubfilters = {
-  [K in TSubCategory]: TSubfilterValue;
-};
+export type TSubfilters = TSubfilterValue[];
 
 export interface IFilterState {
   items: ICake[];
@@ -38,12 +36,12 @@ const initialState: IFilterState = {
     label: "Все категории",
   }, // текущее значение фильтра
   activeSubfilter: [],
-  subfilters: {
-    color: { name: "Цвет", value: [] },
-    price: { name: "Цена", value: { min: 0, max: 0 } },
-    typeTea: { name: "Сорт чая", value: [] },
-    count: { name: "Количество", value: [] },
-  },
+  subfilters: [
+    { name: "Цвет", value: [] },
+    { name: "Цена", value: { min: 0, max: 0 } },
+    { name: "Сорт чая", value: [] },
+    { name: "Количество", value: [] },
+  ],
 };
 
 export const fetchData = createAsyncThunk("filters/fetchData", async () => {
@@ -70,17 +68,18 @@ const filterSlice = createSlice({
         state.filteredItems = state.items.filter((item) => item.type === type);
       }
     },
+
     setSubFilters: (state, action) => {
       const { key, value } = action.payload;
       state.subfilters[key] = value;
       applySecondLevelFilter(state);
     },
-    filteredData: (state, action) => {
-      const {
-        category,
-        subfilters: { color, price, typeTea, count },
-      } = state;
-    },
+    // filteredData: (state, action) => {
+    //   const {
+    //     category,
+    //     subfilters: { color, price, typeTea, count },
+    //   } = state;
+    // },
     resetFilter: (state) => {
       state.filteredItems = state.items;
       state.category = { value: "all", label: "Все категории" };

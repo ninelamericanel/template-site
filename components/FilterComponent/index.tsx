@@ -39,7 +39,7 @@ interface IMinMaxVulues {
   max: null | number;
 }
 
-export const FilterComponent = () => {
+export const FilterComponent = ({ children }) => {
   const [isOpenFilter, openFilter] = useState<boolean>(false);
   const { category, subfilters, activeSubfilter, filteredItems } = useSelector(
     (state: RootState) => state.filter
@@ -72,6 +72,8 @@ export const FilterComponent = () => {
     obj.min = findMinMaxShort(filteredItems, "price").min;
     obj.max = findMinMaxShort(filteredItems, "price").max;
 
+    if (obj.max === obj.min) return { min: null, max: obj.max };
+
     return obj;
   };
 
@@ -92,8 +94,10 @@ export const FilterComponent = () => {
                 <div className={styles.subFilter}>
                   <input
                     type="range"
-                    min={getPriceInfo().max !== getPriceInfo().min ? getPriceInfo().min : null}
-                    max={getPriceInfo().max !== getPriceInfo().min ? getPriceInfo().max : null}
+                    min={getPriceInfo().min}
+                    max={getPriceInfo().max}
+                    value={getPriceInfo().min}
+                    // onChange={}
                     className={styles.input}
                   />
                   <div className={styles.values}>
@@ -112,15 +116,27 @@ export const FilterComponent = () => {
     );
   }
 
+  console.log(subfilters);
+
   return (
-    <div className={styles.block}>
-      {filters.map((item) => {
-        return (
-          <p className={styles.item} onClick={() => selectTab(item)}>
-            {item.label}
-          </p>
-        );
-      })}
-    </div>
+    <>
+      <div className={styles.block}>
+        {filters.map((item) => {
+          return (
+            <p className={styles.item} onClick={() => selectTab(item)}>
+              {item.label}
+            </p>
+          );
+        })}
+      </div>
+      <div className={styles.listAndFilter}>
+        <div className={styles.asideBlock}>
+          {subfilters.map((item) => {
+            return <p>{item.name}</p>;
+          })}
+        </div>
+        {children}
+      </div>
+    </>
   );
 };

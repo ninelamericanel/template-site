@@ -6,7 +6,7 @@
 .titleBlock {
   margin-top: 10vw;
   margin-bottom: 5vw;
-  @include padding;
+  padding: 0 5vw;
 
   @include mobile {
     margin-top: 15vw;

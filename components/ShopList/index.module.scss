@@ -7,7 +7,7 @@
   gap: 30px;
   margin-bottom: 30px;
 
-  grid-template-columns: repeat(4, 270px);
+  grid-template-columns: repeat(3, 270px);
   grid-template-rows: 1fr 1fr;
 
   @include tablet {

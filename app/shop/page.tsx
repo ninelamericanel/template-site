@@ -41,10 +41,11 @@ export default async function Store() {
         <h1 className={styles.title}>{parse(data.h1A)}</h1>
         <h1 className={styles.title}>{parse(data.h1B)}</h1>
       </div>
-      <FilterComponent />
-      <div className={styles.list}>
-        <ShopList count={12} />
-      </div>
+      <FilterComponent>
+        <div className={styles.list}>
+          <ShopList count={5} />
+        </div>
+      </FilterComponent>
     </section>
   );
 }

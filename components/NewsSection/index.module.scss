@@ -1,0 +1,24 @@
+@import "../../styles/mixins";
+@import "../../styles/vars";
+
+.newsSection {
+  display: flex;
+  height: 100vh;
+  box-shadow: 5px -5px 60px grey;
+  @include padding-between-section;
+}
+
+.mainBlock {
+  display: flex;
+  flex-direction: column;
+  padding: 10vw;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+
+  background-color: $color-purple;
+}
+
+.title {
+  @include h2;
+}
