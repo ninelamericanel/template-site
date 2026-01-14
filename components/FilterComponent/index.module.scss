@@ -2,11 +2,25 @@
 
 .block {
   border: 1px solid black;
+  border-left: 1px solid black;
   display: flex;
   column-gap: 6vw;
   @include padding;
   padding-top: 1vw;
   padding-bottom: 1vw;
+  padding-left: 25vw;
+}
+
+.asideBlock {
+  width: 15vw;
+  margin-left: 5vw;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  position: relative;
+  top: -100px;
+  padding-top: 120px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .item {
@@ -25,7 +39,7 @@
   position: absolute;
   transform: translateY(34px);
   width: 300px;
-  height: 150px;
+  // height: 150px;
   z-index: 2;
   background-color: white;
   box-shadow: 5px 25px 40px grey;
@@ -34,30 +48,58 @@
   padding: 15px;
 }
 
+.listAndFilter {
+  display: flex;
+}
+
 .values {
   display: flex;
   justify-content: space-between;
 }
 
 .input {
-  border-top: 1px solid black;
   width: 100%;
 }
 
-// .input[type="range"] {
-//   width: 200px;
-//   /* Стилизация трека и ручки */
-// }
-/* Пример стилизации ручки для Chrome */
+.input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 10px;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+/* Стили для WebKit-браузеров (Chrome, Safari) */
 .input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background: #4caf50;
-  border-radius: 50%;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(71%, 65%, 80%, 1); /* цвет ползунка */
+  border-radius: 50%; /* делаем круглым */
   cursor: pointer;
+  border: none;
+  box-shadow: 5px 5px 20px rgba(71%, 65%, 80%, 1);
 }
-/* Пример стилизации ручки для Firefox */
+
+/* Стили для Firefox */
 .input[type="range"]::-moz-range-thumb {
-  background: #4caf50;
+  width: 20px;
+  height: 20px;
+  background: rgba(71%, 65%, 80%, 1);
   border-radius: 50%;
   cursor: pointer;
+  border: none;
+}
+
+/* Стили для IE/Edge */
+.input[type="range"]::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  background: rgba(71%, 65%, 80%, 1);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
 }
