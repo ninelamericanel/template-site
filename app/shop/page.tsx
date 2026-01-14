@@ -1,22 +1,12 @@
 import parse from "html-react-parser";
-import { useDispatch } from "react-redux";
 import { FilterComponent } from "../../components/FilterComponent";
 import styles from "./index.module.scss";
-import { fetchProducts } from "../../api/fetchProducts";
 import ShopList from "../../components/ShopList";
-import { TCategory, setItems } from "../../src/state/filterSlice";
-import { ICake } from "../../data/data-shop";
-import { useSelector } from "react-redux";
-import { RootState } from "../../src/state/store";
-import { useEffect } from "react";
 
 const data = {
-  h1A: "Сладкие моменты",
-  h1B: "c Laduree",
-  desc: `Ресторан Ladur&eacute;e &agrave;-la Russe`,
-  buttonDesc: "Перейти в магазин",
+  h1A: "Jesus is love <3",
+  h1B: "шалом алейхем :)",
   link: "/shop",
-  // bg,
 };
 
 const checkComponent = (array) => {
@@ -53,7 +43,7 @@ export default async function Store() {
       </div>
       <FilterComponent />
       <div className={styles.list}>
-        <ShopList />
+        <ShopList count={12} />
       </div>
     </section>
   );

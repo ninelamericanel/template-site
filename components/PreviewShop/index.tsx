@@ -3,17 +3,6 @@ import { fetchProducts } from "../../api/fetchProducts";
 import { DataContext } from "../../context/dataContext";
 import styles from "./index.module.scss";
 
-// export default async function PreviewShop({ children }) {
-//   const products = await fetchProducts();
-//   console.log(products);
-//   return (
-//     <section className={styles.section}>
-//       <h2 className={styles.title}> Сладкие моменты</h2>
-//       <DataProvider value={products}>{children}</DataProvider>
-//     </section>
-//   );
-// }
-
 export default async function PreviewShop({ children }) {
   console.log("✅ 1. PreviewShop: старт рендера");
 
