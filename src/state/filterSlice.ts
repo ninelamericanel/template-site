@@ -13,10 +13,10 @@ export interface ICategory {
 }
 
 export type TSubfilterValue =
-  | { name: string; value: TColor[] | [] }
-  | { name: string; value: TTea[] | [] }
-  | { name: string; value: number[] | [] }
-  | { name: string; value: { min: 0; max: 0 } };
+  | { label: string; title: string; value: TColor[] | [] }
+  | { label: string; title: string; value: TTea[] | [] }
+  | { label: string; title: string; value: number[] | [] }
+  | { label: string; title: string; value: { min: 0; max: 0 } };
 
 export type TSubfilters = TSubfilterValue[];
 
@@ -37,10 +37,10 @@ const initialState: IFilterState = {
   }, // текущее значение фильтра
   activeSubfilter: [],
   subfilters: [
-    { name: "Цвет", value: [] },
-    { name: "Цена", value: { min: 0, max: 0 } },
-    { name: "Сорт чая", value: [] },
-    { name: "Количество", value: [] },
+    { title: "Price", label: "Цена", value: { min: 0, max: 0 } },
+    { title: "Color", label: "Цвет", value: [] },
+    { title: "TeaType", label: "Сорт чая", value: [] },
+    { title: "Count", label: "Количество", value: [] },
   ],
 };
 
@@ -57,8 +57,6 @@ const filterSlice = createSlice({
       state.category = action.payload;
       state.activeSubfilter = getActiveSubFilters(action.payload.value);
       const type = action.payload.value;
-
-      state.category = type;
       state.activeSubfilter = getActiveSubFilters(type);
 
       // Логика фильтрации прямо в редьюсере
@@ -74,12 +72,6 @@ const filterSlice = createSlice({
       state.subfilters[key] = value;
       applySecondLevelFilter(state);
     },
-    // filteredData: (state, action) => {
-    //   const {
-    //     category,
-    //     subfilters: { color, price, typeTea, count },
-    //   } = state;
-    // },
     resetFilter: (state) => {
       state.filteredItems = state.items;
       state.category = { value: "all", label: "Все категории" };
@@ -145,5 +137,5 @@ function applySecondLevelFilter(state) {
   state.filteredProducts = result;
 }
 
-export const { setCategory, setSubFilters, filteredData, resetFilter } = filterSlice.actions;
+export const { setCategory, setSubFilters, resetFilter } = filterSlice.actions;
 export default filterSlice.reducer;
