@@ -25,6 +25,8 @@ export interface ICake {
   };
   type: "cake" | "chocolate" | "tea" | "macarons";
   photos: string[];
+  typeTea?: { name: string; value: string };
+  color?: { name: string; value: string };
 }
 
 // const extra = {
@@ -503,6 +505,7 @@ export const cakes: ICake[] = [
   {
     name: "Свадебный торт «Арабеск-test-macarons»",
     type: "macarons",
+    color: { name: "saltedCaramel", label: "Соленая карамель" },
     id: "arabesque-special-001",
     realese: "2024-01-01",
     collection: "special",
@@ -542,6 +545,7 @@ export const cakes: ICake[] = [
   {
     name: "Свадебный торт «Арабеск-test-tea",
     type: "tea",
+    typeTea: { name: "green", value: "Зеленый" },
     id: "arabesque-special-001",
     realese: "2024-01-01",
     collection: "special",

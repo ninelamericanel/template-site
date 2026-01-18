@@ -13,8 +13,8 @@ export interface ICategory {
 }
 
 export type TSubfilterValue =
-  | { label: string; title: string; value: TColor[] | [] }
-  | { label: string; title: string; value: TTea[] | [] }
+  | { label: string; title: string; value: string[] | [] }
+  | { label: string; title: string; value: string[] | [] }
   | { label: string; title: string; value: number[] | [] }
   | { label: string; title: string; value: { min: 0; max: 0 } };
 
@@ -24,7 +24,7 @@ export interface IFilterState {
   items: ICake[];
   filteredItems: ICake[];
   category: ICategory;
-  activeSubfilter: TCategory[];
+  activeSubfilter: TSubfilters;
   subfilters: TSubfilters;
 }
 
@@ -37,10 +37,10 @@ const initialState: IFilterState = {
   }, // текущее значение фильтра
   activeSubfilter: [],
   subfilters: [
-    { title: "Price", label: "Цена", value: { min: 0, max: 0 } },
-    { title: "Color", label: "Цвет", value: [] },
-    { title: "TeaType", label: "Сорт чая", value: [] },
-    { title: "Count", label: "Количество", value: [] },
+    { title: "price", label: "Цена", value: { min: 0, max: 0 } },
+    { title: "color", label: "Цвет", value: [] },
+    { title: "typeTea", label: "Вид чая", value: [] },
+    { title: "count", label: "Количество", value: [] },
   ],
 };
 
@@ -55,9 +55,14 @@ const filterSlice = createSlice({
   reducers: {
     setCategory: (state, action) => {
       state.category = action.payload;
-      state.activeSubfilter = getActiveSubFilters(action.payload.value);
+      state.activeSubfilter = [
+        ...state.subfilters.filter((item) => {
+          if (getActiveSubFilters(action.payload.value).includes(item.title)) return item;
+        }),
+      ];
+
       const type = action.payload.value;
-      state.activeSubfilter = getActiveSubFilters(type);
+      // state.activeSubfilter = getActiveSubFilters(type);
 
       // Логика фильтрации прямо в редьюсере
       if (type === "all") {
@@ -81,15 +86,16 @@ const filterSlice = createSlice({
     builder
       .addCase(fetchData.pending, (state) => {})
       .addCase(fetchData.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.filteredItems = action.payload;
+        const items = action.payload;
+        state.items = items;
+        state.filteredItems = items;
+        // const subfiltersTea = items.filter((item) => item.typeTea.name);
       })
       .addCase(fetchData.rejected, (state) => {});
   },
 });
 
 function getActiveSubFilters(filterValue) {
-  console.log(filterValue, "filtered");
   const map = {
     macarons: ["color", "count", "price"],
     cake: ["price"],

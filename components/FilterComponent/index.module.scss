@@ -103,3 +103,11 @@
   cursor: pointer;
   border: none;
 }
+
+.block {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding: 15px 60px;
+
+  cursor: pointer;
+}

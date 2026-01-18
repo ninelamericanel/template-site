@@ -1,0 +1,36 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(108, 98, 115, 0.25);
+  transition: 0.2s;
+  cursor: pointer;
+  margin: 0 60px;
+  background-color: white;
+  padding: 30px;
+  color: black;
+
+  position: absolute;
+  z-index: 1;
+
+  width: 92%;
+  height: 300px;
+}
+
+.subFilters {
+  display: none;
+}
+
+.active {
+  display: flex;
+  justify-content: space-between;
+}
+
+.values {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  border-bottom: 1px solid black;
+  width: 100%;
+}
