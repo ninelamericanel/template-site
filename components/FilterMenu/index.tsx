@@ -26,9 +26,8 @@ interface IMinMaxVulues {
 
 const FilterMenu = () => {
   const [isActive, setIsActive] = useState<null | number>(null);
-  const { filteredItems, subfilters, activeSubfilter } = useSelector(
-    (state: RootState) => state.filter
-  );
+  const [isChecked, setChecked] = useState<boolean>(false);
+  const { filteredItems, subfilter } = useSelector((state: RootState) => state.filter);
   const dispatch = useDispatch();
   const getPriceInfo = (): IMinMaxVulues => {
     let obj = { min: null, max: null };
@@ -37,7 +36,7 @@ const FilterMenu = () => {
   };
 
   const setFilter = (value, index) => {
-    if (isActive) {
+    if (isActive === index) {
       setIsActive(null);
     } else {
       dispatch(setCategory(value));
@@ -45,11 +44,18 @@ const FilterMenu = () => {
     }
   };
 
+  console.log(subfilter);
+
   const renderCategory = category.map((item, i) => {
     const { min: minPrice, max: maxPrice } = getPriceInfo();
     return (
       <>
-        <li onClick={() => setFilter(item, i)}>{item.label}</li>
+        <li
+          onClick={() => setFilter(item, i)}
+          className={`${styles.itemFilter} ${isActive === i ? styles.itemFilterActive : ""}`}
+        >
+          {item.label}
+        </li>
         {isActive === i && item.value !== "all" ? (
           <AnimatePresence>
             <motion.ul
@@ -57,29 +63,47 @@ const FilterMenu = () => {
               animate={{ height: "fit-content" }}
               exit={{ height: "0px" }}
               transition={{ duration: 0.7 }}
+              className={`${styles.filter}`}
             >
-              {activeSubfilter.map((item) => {
-                return (
-                  <>
-                    <li>{item.label}</li>
-                    {item.title === "price" ? (
-                      <div className={styles.subFilter}>
-                        <input
-                          type="range"
-                          min={minPrice}
-                          max={maxPrice}
-                          value={maxPrice}
-                          // onChange={}
-                          className={styles.input}
-                        />
-                        <div className={styles.values}>
-                          <span>{minPrice}</span>
-                          <span>{maxPrice}</span>
+              {subfilter.map((item) => {
+                if (item.view)
+                  return (
+                    <>
+                      <li className={styles.category}>{item.label}</li>
+                      {item.title === "price" ? (
+                        <div className={styles.subFilter}>
+                          <input
+                            type="range"
+                            min={minPrice}
+                            max={maxPrice}
+                            value={maxPrice}
+                            // onChange={}
+                            className={styles.input}
+                          />
+                          <div className={styles.values}>
+                            <span>{minPrice}</span>
+                            <span>{maxPrice}</span>
+                          </div>
                         </div>
-                      </div>
-                    ) : null}
-                  </>
-                );
+                      ) : (
+                        item.value?.map((v) => (
+                          <div className={styles.checkboxBlock}>
+                            <input
+                              type="checkbox"
+                              id={v}
+                              name={v}
+                              checked={isChecked}
+                              className={styles.checkbox}
+                              onClick={setChecked}
+                            />
+                            <label className={styles.label} for={v}>
+                              {v}
+                            </label>
+                          </div>
+                        ))
+                      )}
+                    </>
+                  );
               })}
             </motion.ul>
           </AnimatePresence>
@@ -88,7 +112,7 @@ const FilterMenu = () => {
     );
   });
 
-  console.log(category, activeSubfilter);
+  // console.log(category, activeSubfilter);
 
   return <ul className={styles.aside}>{renderCategory}</ul>;
 };

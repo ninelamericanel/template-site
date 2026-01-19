@@ -1,8 +1,8 @@
 @import "../../styles/mixins";
 
 .block {
-  border: 1px solid black;
-  border-left: 1px solid black;
+  border: 1px solid grey;
+  border-left: 1px solid grey;
   display: flex;
   column-gap: 6vw;
   @include padding;

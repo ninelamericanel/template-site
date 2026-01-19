@@ -1,16 +1,17 @@
 .filter {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 10px rgba(108, 98, 115, 0.25);
+  row-gap: 20px;
+  // box-shadow: 0 10px 10px rgba(108, 98, 115, 0.25);
   transition: 0.2s;
   cursor: pointer;
-  margin: 0 60px;
+  // margin: 0 60px;
   background-color: white;
   padding: 30px;
   color: black;
 
-  position: absolute;
-  z-index: 1;
+  // position: absolute;
+  // z-index: 1;
 
   width: 92%;
   height: 300px;
@@ -33,4 +34,50 @@
 .input {
   border-bottom: 1px solid black;
   width: 100%;
+}
+
+.listCategory {
+}
+
+.category {
+  cursor: pointer;
+}
+
+.itemFilter {
+  padding: 10px;
+  border-bottom: 1px dashed grey;
+}
+
+.itemFilterActive {
+  color: plum;
+}
+
+.checkboxBlock {
+  display: flex;
+  column-gap: 5px;
+}
+
+.checkbox {
+  position: relative;
+  border: 1px solid grey;
+  width: 20px;
+  height: 20px;
+}
+
+.label {
+  position: relative;
+  &:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+    top: -3px;
+    left: -26px;
+    display: block;
+    position: absolute;
+  }
+}
+
+.checkbox:checked + .label:before {
+  background-image: url("../../src/assets/icon-checkbox.svg");
 }
