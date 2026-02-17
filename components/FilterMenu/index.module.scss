@@ -1,3 +1,5 @@
+@import "../../styles/vars";
+
 .filter {
   display: flex;
   flex-direction: column;
@@ -33,7 +35,12 @@
 
 .input {
   border-bottom: 1px solid black;
+  accent-color: $color-purple;
   width: 100%;
+}
+
+.input::-webkit-slider-thumb {
+  border-image: linear-gradient(90deg, #c56fff 50%, #ababab 0) 0 1 / calc(50% - 4px) 100vw/0 100vw;
 }
 
 .listCategory {
@@ -80,4 +87,14 @@
 
 .checkbox:checked + .label:before {
   background-image: url("../../src/assets/icon-checkbox.svg");
+}
+
+.disabled {
+  //
+  color: $color-disabled;
+
+  input {
+    border: 1px solid $color-disabled;
+    background-color: $color-disabled;
+  }
 }

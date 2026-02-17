@@ -23,9 +23,9 @@ export interface ICake {
     saturatedFat: string;
     protein: string;
   };
-  type: "cake" | "chocolate" | "typeTea" | "macarons";
+  type: "cake" | "chocolate" | "tea" | "macarons";
   photos: string[];
-  typeTea?: { name: string; value: string };
+  tea?: { name: string; value: string };
   color?: { name: string; value: string };
 }
 
@@ -544,8 +544,8 @@ export const cakes: ICake[] = [
   },
   {
     name: "Свадебный торт «Арабеск-test-tea",
-    type: "typeTea",
-    typeTea: { name: "green", value: "Зеленый" },
+    type: "tea",
+    tea: { name: "green", value: "Зеленый" },
     id: "arabesque-special-001",
     realese: "2024-01-01",
     collection: "special",
@@ -584,12 +584,92 @@ export const cakes: ICake[] = [
   },
   {
     name: "Свадебный торn-test-tea",
-    type: "typeTea",
-    typeTea: { name: "black", value: "Черный" },
+    type: "tea",
+    tea: { name: "black", value: "Черный" },
     id: "arabesque-special-001",
     realese: "2024-01-01",
     collection: "special",
-    price: 4500,
+    price: 2500,
+    information: {
+      allergen: ["глютен", "молоко", "арахис"],
+      ingredient: [
+        "бисквитная основа",
+        "крем на растительных маслах",
+        "дроблёный арахис",
+        "сахар",
+        "яйца",
+        "ванилин",
+      ],
+      storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
+    },
+    description:
+      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
+    weight: "0,75 кг",
+    nutritional: {
+      energy: {
+        kj: 1800,
+        kcal: 430,
+      },
+      carbohydrate: "50 г",
+      sugars: "30 г",
+      salt: "0,2 г",
+      fat: "24 г",
+      saturatedFat: "8 г",
+      protein: "6 г",
+    },
+    photos: [
+      "https://example.com/photos/arabesque-special-1.jpg",
+      "https://example.com/photos/arabesque-special-2.jpg",
+    ],
+  },
+  {
+    name: "Свадебный торn-test-tea-2000",
+    type: "tea",
+    tea: { name: "black", value: "Черный" },
+    id: "arabesque-special-001",
+    realese: "2024-01-01",
+    collection: "special",
+    price: 2000,
+    information: {
+      allergen: ["глютен", "молоко", "арахис"],
+      ingredient: [
+        "бисквитная основа",
+        "крем на растительных маслах",
+        "дроблёный арахис",
+        "сахар",
+        "яйца",
+        "ванилин",
+      ],
+      storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
+    },
+    description:
+      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
+    weight: "0,75 кг",
+    nutritional: {
+      energy: {
+        kj: 1800,
+        kcal: 430,
+      },
+      carbohydrate: "50 г",
+      sugars: "30 г",
+      salt: "0,2 г",
+      fat: "24 г",
+      saturatedFat: "8 г",
+      protein: "6 г",
+    },
+    photos: [
+      "https://example.com/photos/arabesque-special-1.jpg",
+      "https://example.com/photos/arabesque-special-2.jpg",
+    ],
+  },
+  {
+    name: "Свадебный торn-test-tea-10292",
+    type: "tea",
+    tea: { name: "black", value: "Черный" },
+    id: "arabesque-special-001",
+    realese: "2024-01-01",
+    collection: "special",
+    price: 10292,
     information: {
       allergen: ["глютен", "молоко", "арахис"],
       ingredient: [

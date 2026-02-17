@@ -1,12 +1,13 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { ICategory, setCategory } from "../../src/state/filterSlice";
+import { ICategory, setCategory, setSubFilters } from "../../src/state/filterSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import { RootState } from "../../src/state/store";
 import { findMinMaxShort } from "../../src/utils/findMinMaxShort";
 import styles from "./index.module.scss";
 import { useState } from "react";
+import { RangeInput } from "../RangeInput";
 
 const dataCategory = ["Торты", "Макаруны", "Шоколад", "Чай"];
 const category = [
@@ -15,7 +16,7 @@ const category = [
     label: "Все категории",
   },
   { value: "cake", label: "Торты" },
-  { label: "Чай", value: "typeTea" },
+  { label: "Чай", value: "tea" },
   { label: "Шоколад", value: "chocolate" },
 ];
 
@@ -26,14 +27,11 @@ interface IMinMaxVulues {
 
 const FilterMenu = () => {
   const [isActive, setIsActive] = useState<null | number>(null);
-  const [isChecked, setChecked] = useState<boolean>(false);
-  const { filteredItems, subfilter } = useSelector((state: RootState) => state.filter);
+  const [isChecked, setChecked] = useState<null | number>(null);
+  const { filteredItems, subfilters, activeSubfilters, activeSubCategories } = useSelector(
+    (state: RootState) => state.filter
+  );
   const dispatch = useDispatch();
-  const getPriceInfo = (): IMinMaxVulues => {
-    let obj = { min: null, max: null };
-    obj = findMinMaxShort(filteredItems, "price");
-    return obj.max === obj.min ? { min: null, max: obj.max } : obj;
-  };
 
   const setFilter = (value, index) => {
     if (isActive === index) {
@@ -44,10 +42,16 @@ const FilterMenu = () => {
     }
   };
 
-  console.log(subfilter);
+  const setSubcategory = (name, type) => {
+    dispatch(setSubFilters({ name, type }));
+  };
 
+  console.log(subfilters);
   const renderCategory = category.map((item, i) => {
-    const { min: minPrice, max: maxPrice } = getPriceInfo();
+    const minPrice = subfilters.price[0];
+    const maxPrice = subfilters.price[1];
+    const averageValue = (minPrice + maxPrice) / 2;
+    const valuePrice = minPrice && maxPrice ? averageValue : maxPrice;
     return (
       <>
         <li
@@ -65,45 +69,32 @@ const FilterMenu = () => {
               transition={{ duration: 0.7 }}
               className={`${styles.filter}`}
             >
-              {subfilter.map((item) => {
-                if (item.view)
-                  return (
-                    <>
-                      <li className={styles.category}>{item.label}</li>
-                      {item.title === "price" ? (
-                        <div className={styles.subFilter}>
-                          <input
-                            type="range"
-                            min={minPrice}
-                            max={maxPrice}
-                            value={maxPrice}
-                            // onChange={}
-                            className={styles.input}
-                          />
-                          <div className={styles.values}>
-                            <span>{minPrice}</span>
-                            <span>{maxPrice}</span>
-                          </div>
-                        </div>
-                      ) : (
-                        item.value?.map((v) => (
-                          <div className={styles.checkboxBlock}>
-                            <input
-                              type="checkbox"
-                              id={v}
-                              name={v}
-                              checked={isChecked}
-                              className={styles.checkbox}
-                              onClick={setChecked}
-                            />
-                            <label className={styles.label} for={v}>
-                              {v}
-                            </label>
-                          </div>
-                        ))
-                      )}
-                    </>
-                  );
+              {activeSubCategories.map((subfilter) => {
+                if (subfilter === "price") {
+                  return <RangeInput minValue={minPrice} maxValue={maxPrice} title={"Цена"} />;
+                }
+
+                if (subfilter === "tea") {
+                  return subfilters.tea.map((item) => {
+                    return (
+                      <div
+                        className={`${styles.checkboxBlock} ${!item.disabled ? styles.disabled : ""}`}
+                      >
+                        <input
+                          disabled={!item.disabled}
+                          type="checkbox"
+                          id={item.name}
+                          name={item.name}
+                          className={styles.checkbox}
+                          onClick={() => setSubcategory(item.type, subfilter)}
+                        />
+                        <label className={styles.label} for={item.name}>
+                          {item.name}
+                        </label>
+                      </div>
+                    );
+                  });
+                }
               })}
             </motion.ul>
           </AnimatePresence>
@@ -111,8 +102,6 @@ const FilterMenu = () => {
       </>
     );
   });
-
-  // console.log(category, activeSubfilter);
 
   return <ul className={styles.aside}>{renderCategory}</ul>;
 };

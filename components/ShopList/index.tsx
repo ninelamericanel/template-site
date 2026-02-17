@@ -18,8 +18,6 @@ const ShopList = ({ count }: IShopList) => {
     dispatch(fetchData());
   }, []);
 
-  console.log(items, "ShopList");
-
   const renderData = items.slice(0, count)?.map((item, index) => {
     return <Card data={item} />;
   });
