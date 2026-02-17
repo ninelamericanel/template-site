@@ -1,0 +1,16 @@
+@import "../../styles/vars";
+
+.input {
+  border-bottom: 1px solid black;
+  accent-color: $color-purple;
+  width: 100%;
+}
+
+.input::-webkit-slider-thumb {
+  border-image: linear-gradient(90deg, #c56fff 50%, #ababab 0) 0 1 / calc(50% - 4px) 100vw/0 100vw;
+}
+
+.values {
+  display: flex;
+  justify-content: space-between;
+}
