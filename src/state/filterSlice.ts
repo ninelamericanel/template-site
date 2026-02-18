@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { findMinMaxShort } from "../utils/findMinMaxShort";
+import { findMinMaxSort } from "../../app/utils/findMinMaxSort";
 import { fetchProducts } from "../../api/fetchProducts";
 import { ICake } from "../../data/data-shop";
 export type TCategory = "all" | "cake" | "chocolate" | "macarons" | "tea";
@@ -113,7 +113,7 @@ const filterSlice = createSlice({
       state.activeSubfilters = subcategories;
       subcategories.forEach((item) => {
         if (item === "price") {
-          const { min, max } = findMinMaxShort(state.filteredItems, "price");
+          const { min, max } = findMinMaxSort(state.filteredItems, "price");
           state.subfilters[item] = [min, max];
         }
 

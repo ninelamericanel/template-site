@@ -16,7 +16,6 @@ const FilterMenu = () => {
   const dispatch = useDispatch();
 
   const setFilter = (value, index) => {
-    console.log("click", value);
     if (isActive === index) {
       setIsActive(null);
     } else {
