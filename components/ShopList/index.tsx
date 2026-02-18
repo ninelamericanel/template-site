@@ -1,10 +1,9 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { ICake } from "../../data/data-shop";
 import Card from "../Card";
 import styles from "./index.module.scss";
-import { fetchData, resetFilter } from "../../src/state/filterSlice";
+import { fetchData } from "../../src/state/filterSlice";
 import { RootState } from "../../src/state/store";
 
 interface IShopList {
@@ -18,8 +17,8 @@ const ShopList = ({ count }: IShopList) => {
     dispatch(fetchData());
   }, []);
 
-  const renderData = items.slice(0, count)?.map((item, index) => {
-    return <Card data={item} />;
+  const renderData = items.slice(0, count)?.map((item) => {
+    return <Card data={item} key={item.id} />;
   });
   return <div className={styles.list}>{renderData}</div>;
 };

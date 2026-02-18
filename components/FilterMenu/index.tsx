@@ -1,39 +1,22 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { ICategory, setCategory, setSubFilters } from "../../src/state/filterSlice";
+import { setCategory, setSubFilters } from "../../src/state/filterSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import { RootState } from "../../src/state/store";
-import { findMinMaxShort } from "../../src/utils/findMinMaxShort";
 import styles from "./index.module.scss";
 import { useState } from "react";
 import { RangeInput } from "../RangeInput";
 
-const dataCategory = ["Торты", "Макаруны", "Шоколад", "Чай"];
-const category = [
-  {
-    value: "all",
-    label: "Все категории",
-  },
-  { value: "cake", label: "Торты" },
-  { label: "Чай", value: "tea" },
-  { label: "Шоколад", value: "chocolate" },
-];
-
-interface IMinMaxVulues {
-  min: null | number;
-  max: null | number;
-}
-
 const FilterMenu = () => {
   const [isActive, setIsActive] = useState<null | number>(null);
-  const [isChecked, setChecked] = useState<null | number>(null);
-  const { filteredItems, subfilters, activeSubfilters, activeSubCategories } = useSelector(
+  const { subfilters, activeSubfilters, category } = useSelector(
     (state: RootState) => state.filter
   );
   const dispatch = useDispatch();
 
   const setFilter = (value, index) => {
+    console.log("click", value);
     if (isActive === index) {
       setIsActive(null);
     } else {
@@ -46,16 +29,13 @@ const FilterMenu = () => {
     dispatch(setSubFilters({ name, type }));
   };
 
-  console.log(subfilters);
   const renderCategory = category.map((item, i) => {
     const minPrice = subfilters.price[0];
     const maxPrice = subfilters.price[1];
-    const averageValue = (minPrice + maxPrice) / 2;
-    const valuePrice = minPrice && maxPrice ? averageValue : maxPrice;
     return (
       <>
         <li
-          onClick={() => setFilter(item, i)}
+          onClick={() => setFilter(item.value, i)}
           className={`${styles.itemFilter} ${isActive === i ? styles.itemFilterActive : ""}`}
         >
           {item.label}
@@ -69,9 +49,16 @@ const FilterMenu = () => {
               transition={{ duration: 0.7 }}
               className={`${styles.filter}`}
             >
-              {activeSubCategories.map((subfilter) => {
+              {activeSubfilters.map((subfilter) => {
                 if (subfilter === "price") {
-                  return <RangeInput minValue={minPrice} maxValue={maxPrice} title={"Цена"} />;
+                  return (
+                    <RangeInput
+                      changedValue={subfilters.changedPrice[0]}
+                      minValue={minPrice}
+                      maxValue={maxPrice}
+                      title={"Цена"}
+                    />
+                  );
                 }
 
                 if (subfilter === "tea") {

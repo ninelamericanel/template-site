@@ -10,31 +10,6 @@ const data = {
   link: "/shop",
 };
 
-const checkComponent = (array) => {
-  const arr = array.map((item) => {
-    return item?.type;
-  });
-  return new Set(arr);
-};
-
-function filterItems(
-  array,
-  typeFilter,
-  categoryFilters,
-  typeKey = "type",
-  categoryKey = "category"
-) {
-  // 1‑й уровень: фильтрация по типу товара
-  const typeFiltered = typeFilter ? array.filter((item) => item[typeKey] === typeFilter) : array;
-
-  // 2‑й уровень: фильтрация по спискам категорий
-  if (!categoryFilters || categoryFilters.length === 0) {
-    return typeFiltered;
-  }
-
-  return typeFiltered.filter((item) => categoryFilters.includes(item[categoryKey]));
-}
-
 export default async function Store() {
   return (
     <section className={styles.section}>

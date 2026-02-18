@@ -669,7 +669,7 @@ export const cakes: ICake[] = [
     id: "arabesque-special-001",
     realese: "2024-01-01",
     collection: "special",
-    price: 10292,
+    price: 120000,
     information: {
       allergen: ["глютен", "молоко", "арахис"],
       ingredient: [

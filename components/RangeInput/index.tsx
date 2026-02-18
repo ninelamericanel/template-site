@@ -1,22 +1,22 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../src/state/store";
+"use client";
+import { useDispatch } from "react-redux";
+import { setSubFilters } from "../../src/state/filterSlice";
 import styles from "./index.module.scss";
 
 interface IProps {
   minValue: number;
   maxValue: number;
   title: string;
+  changedValue: number;
 }
 
-function roundToStep(number, step) {
-  return Math.round(number / step) * step;
-}
-
-export const RangeInput = ({ minValue, maxValue, title }: IProps) => {
+export const RangeInput = ({ minValue, maxValue, changedValue, title }: IProps) => {
+  const dispatch = useDispatch();
   const step = 500;
-  const averageValue = roundToStep(Math.floor((minValue + maxValue) / 2), step);
-  const [value, setValue] = useState(averageValue);
+
+  const onChangefunc = (v) => {
+    dispatch(setSubFilters({ type: "price", value: v }));
+  };
 
   return (
     <>
@@ -26,14 +26,14 @@ export const RangeInput = ({ minValue, maxValue, title }: IProps) => {
           type="range"
           min={minValue}
           max={maxValue}
-          value={value}
+          value={changedValue ? changedValue : minValue}
           step={step}
-          onChange={(event) => setValue(+event.target.value)}
+          onChange={(event) => onChangefunc(+event.target.value)}
           className={styles.input}
         />
         <div className={styles.values}>
-          <span>{value}</span>
-          <span>{maxValue ? maxValue : value}</span>
+          <span>{changedValue ? changedValue : minValue}</span>
+          <span>{maxValue ? maxValue : null}</span>
         </div>
       </div>
     </>

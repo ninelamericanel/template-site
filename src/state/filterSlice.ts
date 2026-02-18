@@ -2,8 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { findMinMaxShort } from "../utils/findMinMaxShort";
 import { fetchProducts } from "../../api/fetchProducts";
 import { ICake } from "../../data/data-shop";
-import { maxMacarons, minMacarons } from "../constants";
-// в constants указано максимальное и минимальное количество макарунов в коробке
 export type TCategory = "all" | "cake" | "chocolate" | "macarons" | "tea";
 type TColor = "lemon" | "saltedCaramel" | "vanilla";
 type TTea = "green" | "black";
@@ -16,18 +14,13 @@ export interface ICategory {
 }
 
 export type TSubfilterValue = {
-  // withFloatingPoint: {
   price: [number, number];
-  // count: [number, number];
-  // };
-  // checkboxes: {
   tea: {
     type: string;
     name: string;
     active: boolean;
     disabled: boolean;
   }[];
-  // };
 };
 
 export interface Isubftype {
@@ -44,9 +37,10 @@ export interface IFilterState {
   filteredItems: ICake[];
   category: ICategory[];
   activeSubfilters: string[];
-  activeSubCategories: string[];
+  activeCategorie: string;
   subfilters: {
     price: [number, number];
+    changedPrice: [number, number];
     tea: Isubftype[];
   };
 }
@@ -66,9 +60,10 @@ const initialState: IFilterState = {
     { label: "Шоколад", value: "chocolate", active: false, view: false },
   ],
   activeSubfilters: [],
-  activeSubCategories: [],
+  activeCategorie: "",
   subfilters: {
     price: [0, 0],
+    changedPrice: [0, 0],
     tea: [
       { type: "fruit", name: "Фруктовый", active: false, disabled: true },
       { type: "green", name: "Зеленый", active: false, disabled: true },
@@ -95,75 +90,108 @@ const filterSlice = createSlice({
   initialState,
   reducers: {
     setCategory: (state, action) => {
-      state.category = action.payload;
-
-      const type = action.payload.value;
-
-      // фильтрация по категориям
+      const { payload: type } = action;
       if (type === "all") {
-        state.filteredItems = state.items; // или очищаем
+        filterSlice.caseReducers.resetFilter(state);
       } else {
-        const filteredItems = state.items.filter((item) => item.type === type);
-
-        state.filteredItems = filteredItems;
-        const subcategories = categoriesNames(type).subfilters;
-        state.activeSubCategories = subcategories;
-        subcategories.forEach((item) => {
-          if (item === "price") {
-            const { min, max } = findMinMaxShort(filteredItems, "price");
-            state.subfilters[item] = [min, max];
+        state.category = state.category.map((item) => {
+          if (item.value === type) {
+            state.activeCategorie = type;
+            return { ...item, active: true };
           }
-
-          if (item === "tea") {
-            const teaTypes = filteredItems.map((item) => item.tea.name);
-            const subfilters = state.subfilters[item];
-            const array = subfilters.map((item) => {
-              const isAble = teaTypes.includes(item.type);
-              return {
-                ...item,
-                disabled: isAble,
-              };
-            });
-
-            state.subfilters.tea = array;
-          }
+          return { ...item, active: false };
         });
+        filterSlice.caseReducers.filterItems(state);
+        filterSlice.caseReducers.showSubfilters(state, type);
       }
     },
-
-    setSubFilters: (state, action) => {
-      const { name, type } = action.payload;
-      state.subfilters[type] = state.subfilters[type].map((item) => {
-        if (item.active && item.type !== name) {
-          return item;
-        }
-        if (item.active && item.type === name) {
-          return { ...item, active: false };
-        }
-        return { ...item, active: item.type === name };
-      });
-
-      filterSlice.caseReducers.filterItems(state);
-    },
-    resetFilter: (state) => {
-      state.filteredItems = state.items;
-      state.category = { value: "all", label: "Все категории" };
-    },
     filterItems: (state) => {
-      // по чекбоксам
-      state.filteredItems = state.items.filter((item) => {
-        const { type: itemType } = item;
+      state.filteredItems = state.items.filter((cb) => cb.type === state.activeCategorie);
+    },
+    showSubfilters: (state, type) => {
+      const subcategories = categoriesNames(type).subfilters;
+      state.activeSubfilters = subcategories;
+      subcategories.forEach((item) => {
+        if (item === "price") {
+          const { min, max } = findMinMaxShort(state.filteredItems, "price");
+          state.subfilters[item] = [min, max];
+        }
 
-        if (!state.subfilters[itemType]) return false;
+        if (item === "tea") {
+          const teaTypes = state.filteredItems.map((item) => item.tea?.name);
+          const subfilters = state.subfilters[item];
+          const array = subfilters.map((item) => {
+            const isDisable = teaTypes.includes(item.type);
+            return {
+              ...item,
+              disabled: isDisable,
+            };
+          });
 
-        const activeCheckboxes = state.subfilters[itemType]
+          state.subfilters.tea = array;
+        }
+      });
+    },
+    setSubFilters: (state, action) => {
+      const { name, type, value } = action.payload;
+      if (type !== "price") {
+        state.subfilters[type] = state.subfilters[type].map((item) => {
+          if (item.active && item.type !== name) {
+            return item;
+          }
+          if (item.active && item.type === name) {
+            return { ...item, active: false };
+          }
+          return { ...item, active: item.type === name };
+        });
+      }
+
+      if (type === "price") {
+        state.subfilters.changedPrice[0] = value;
+      }
+
+      filterSlice.caseReducers.filterItemsOnSubfilter(state, type);
+    },
+    filterItemsOnSubfilter: (state, action) => {
+      const changedRangeValues = [0, 0];
+
+      changedRangeValues[0] =
+        state.subfilters.changedPrice[0] > 0
+          ? state.subfilters.changedPrice[0]
+          : state.subfilters.price[0];
+      changedRangeValues[1] = state.subfilters.price[1];
+
+      const filteredProductsOnRange = (product) => {
+        return product.price >= changedRangeValues[0] && product.price <= changedRangeValues[1];
+      };
+
+      let filtered = state.items.filter(filteredProductsOnRange);
+
+      const filterProductsOnCheckboxes = (product) => {
+        const activeCheckboxes = state.subfilters[action]
           .filter((cb) => cb.active)
           .map((cb) => cb.type);
 
         if (activeCheckboxes.length === 0) return true;
 
-        const elementSubtype = item[itemType]?.name;
+        const elementSubtype = product[action]?.name;
         return activeCheckboxes.includes(elementSubtype);
+      };
+
+      filtered = filtered.filter(filterProductsOnCheckboxes);
+
+      state.filteredItems = filtered;
+    },
+    resetFilter: (state) => {
+      state.filteredItems = state.items;
+      state.category = state.category.map((item) => {
+        return { ...item, active: item.value === "all" };
+      });
+      state.activeCategorie = "";
+      state.subfilters.price = [0, 0];
+      state.subfilters.changedPrice = [0, 0];
+      state.subfilters.tea = state.subfilters.tea.map((item) => {
+        return { ...item, active: false };
       });
     },
   },
@@ -202,30 +230,6 @@ const categoriesNames = (value) => {
 
   return map[value];
 };
-
-function applySecondLevelFilter(state) {
-  let result = [...state.filteredProducts]; // берём уже отфильтрованный по типу список
-
-  // Фильтрация по цене
-  if (state.filters.price.min !== null) {
-    result = result.filter((p) => p.price >= state.filters.price.min);
-  }
-  if (state.filters.price.max !== null) {
-    result = result.filter((p) => p.price <= state.filters.price.max);
-  }
-
-  // Фильтрация по цвету
-  if (state.filters.color.length > 0) {
-    result = result.filter((p) => state.filters.color.includes(p.color));
-  }
-
-  // Фильтрация по размеру
-  if (state.filters.size.length > 0) {
-    result = result.filter((p) => state.filters.size.includes(p.size));
-  }
-
-  state.filteredProducts = result;
-}
 
 export const { setCategory, setSubFilters, resetFilter } = filterSlice.actions;
 export default filterSlice.reducer;
