@@ -90,10 +90,9 @@ const filterSlice = createSlice({
   initialState,
   reducers: {
     setCategory: (state, action) => {
+      filterSlice.caseReducers.resetFilter(state);
       const { payload: type } = action;
-      if (type === "all") {
-        filterSlice.caseReducers.resetFilter(state);
-      } else {
+      if (type !== "all") {
         state.category = state.category.map((item) => {
           if (item.value === type) {
             state.activeCategorie = type;
@@ -109,6 +108,7 @@ const filterSlice = createSlice({
       state.filteredItems = state.items.filter((cb) => cb.type === state.activeCategorie);
     },
     showSubfilters: (state, type) => {
+      console.log(type);
       const subcategories = categoriesNames(type).subfilters;
       state.activeSubfilters = subcategories;
       subcategories.forEach((item) => {

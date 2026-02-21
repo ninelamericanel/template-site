@@ -1,0 +1,41 @@
+@import "../../styles/vars";
+
+.checkboxBlock {
+  display: flex;
+  column-gap: 5px;
+}
+
+.checkbox {
+  position: relative;
+  border: 1px solid grey;
+  width: 20px;
+  height: 20px;
+}
+
+.label {
+  position: relative;
+  &:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+    top: -3px;
+    left: -26px;
+    display: block;
+    position: absolute;
+  }
+}
+
+.checkbox:checked + .label:before {
+  background-image: url("../../src/assets/icon-checkbox.svg");
+}
+
+.disabled {
+  //
+  color: $color-disabled;
+
+  input {
+    border: 1px solid $color-disabled;
+    background-color: $color-disabled;
+  }
+}
