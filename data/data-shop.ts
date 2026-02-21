@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export interface ICake {
   name: string;
   id: string;
@@ -41,7 +43,7 @@ export const cakes: ICake[] = [
   {
     name: "Одина Фиалка",
     type: "cake",
-    id: "odina-fialka-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "base",
     price: 1500,
@@ -80,7 +82,7 @@ export const cakes: ICake[] = [
   {
     name: "Испахан",
     type: "cake",
-    id: "ispan-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "base",
     price: 1500,
@@ -108,7 +110,7 @@ export const cakes: ICake[] = [
   {
     name: "Мак‑Лимон",
     type: "cake",
-    id: "mak-limon-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "base",
     price: 1500,
@@ -147,7 +149,7 @@ export const cakes: ICake[] = [
   {
     name: "Мария‑Антуанетта: Испахан",
     type: "cake",
-    id: "marie-antoinette-ispan-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 700,
@@ -187,7 +189,7 @@ export const cakes: ICake[] = [
   {
     name: "Мария‑Антуанетта: Фисташка",
     type: "cake",
-    id: "marie-antoinette- pistachio-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 700,
@@ -227,7 +229,7 @@ export const cakes: ICake[] = [
   {
     name: "Мария‑Антуанетта: Чёрная смородина — Фиалка",
     type: "cake",
-    id: "marie-antoinette-blackcurrant-violet-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 700,
@@ -267,7 +269,7 @@ export const cakes: ICake[] = [
   {
     name: "Свадебный торт «Помпадур»",
     type: "cake",
-    id: "pompadour-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 9500,
@@ -308,7 +310,7 @@ export const cakes: ICake[] = [
   {
     name: "Свадебный торт «Мария‑Антуанетта»",
     type: "cake",
-    id: "marie-antoinette-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 12000,
@@ -349,7 +351,7 @@ export const cakes: ICake[] = [
   {
     name: "Свадебный торт «Арабеск»",
     type: "cake",
-    id: "arabesque-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 4500,
@@ -388,7 +390,7 @@ export const cakes: ICake[] = [
   {
     name: "Свадебный торт «Арабеск - test-chocolate»",
     type: "chocolate",
-    id: "arabesque-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 4500,
@@ -427,7 +429,7 @@ export const cakes: ICake[] = [
   {
     name: "Свадебный торт «Арабеск - test-chocolate»",
     type: "chocolate",
-    id: "arabesque-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 4500,
@@ -466,7 +468,7 @@ export const cakes: ICake[] = [
   {
     name: "Свадебный торт «Арабеск - test-chocolate»",
     type: "chocolate",
-    id: "arabesque-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 4500,
@@ -506,7 +508,7 @@ export const cakes: ICake[] = [
     name: "Свадебный торт «Арабеск-test-macarons»",
     type: "macarons",
     color: { name: "saltedCaramel", value: "Соленая карамель" },
-    id: "arabesque-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 4500,
@@ -546,7 +548,7 @@ export const cakes: ICake[] = [
     name: "Свадебный торт «Арабеск-test-tea",
     type: "tea",
     tea: { name: "green", value: "Зеленый" },
-    id: "arabesque-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 4500,
@@ -586,7 +588,7 @@ export const cakes: ICake[] = [
     name: "Свадебный торn-test-tea",
     type: "tea",
     tea: { name: "black", value: "Черный" },
-    id: "arabesque-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 2500,
@@ -626,7 +628,7 @@ export const cakes: ICake[] = [
     name: "Свадебный торn-test-tea-2000",
     type: "tea",
     tea: { name: "black", value: "Черный" },
-    id: "arabesque-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 2000,
@@ -666,7 +668,7 @@ export const cakes: ICake[] = [
     name: "Свадебный торn-test-tea-10292",
     type: "tea",
     tea: { name: "black", value: "Черный" },
-    id: "arabesque-special-001",
+    id: uuidv4(),
     realese: "2024-01-01",
     collection: "special",
     price: 120000,
