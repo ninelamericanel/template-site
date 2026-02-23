@@ -18,3 +18,16 @@ main,
   position: relative;
   z-index: -99;
 }
+
+.disable {
+  // element.style {
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+.disable-content {
+  display: none;
+}

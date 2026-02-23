@@ -8,9 +8,10 @@ interface IButton {
   desc: string;
   theme?: "dark" | "light";
   func: () => void;
+  buttonType?: "submit" | "button";
 }
 
-const Button = ({ type, href, desc, theme, func }: IButton) => {
+const Button = ({ type, href, desc, theme, func, buttonType = "button" }: IButton) => {
   // "A man, a plan, a canal, Panama!"
 
   return type === "link" ? (
@@ -19,7 +20,7 @@ const Button = ({ type, href, desc, theme, func }: IButton) => {
     </a>
   ) : (
     <div className={`${theme ? styles[theme] : ""} ${styles.button}`} onClick={func}>
-      <button type={type}>{desc}</button>
+      <button type={buttonType}>{desc}</button>
     </div>
   );
 };

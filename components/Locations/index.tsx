@@ -1,11 +1,13 @@
 "use client";
 import { createPortal } from "react-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
 import Button from "../Button";
 import { motion, useInView } from "framer-motion";
 import parse from "html-react-parser";
 import Portal from "../Portal";
+import Modal from "../Modal";
+import { cancelScroll } from "../../app/utils/cancelScroll";
 
 const data = [
   {
@@ -26,6 +28,10 @@ const Location = () => {
   const [isOpen, setOpen] = useState(false);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false });
+
+  useEffect(() => {
+    cancelScroll(isOpen);
+  }, [isOpen]);
 
   return (
     <section className={styles.section} ref={sectionRef}>
@@ -59,7 +65,7 @@ const Location = () => {
           <Button type="button" desc="Адрес" theme="light" func={() => console.log("adresses")} />
         </motion.div>
       </div>
-      {isOpen ? <Portal id="locations" children={<p>Hello</p>} /> : null}
+      {isOpen ? <Modal id="locations" func={() => setOpen(!isOpen)} /> : null}
     </section>
   );
 };
