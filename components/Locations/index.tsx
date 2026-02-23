@@ -1,21 +1,17 @@
 "use client";
+import { createPortal } from "react-dom";
 import { useRef, useState } from "react";
-import Image from "next/image";
 import styles from "./index.module.scss";
-
-import location1 from "../../src/assets/location1.png";
-import location2 from "../../src/assets/location2.png";
 import Button from "../Button";
 import { motion, useInView } from "framer-motion";
 import parse from "html-react-parser";
+import Portal from "../Portal";
 
 const data = [
   {
     id: "block1",
-    title: parse("Ресторан Ladur&eacute;e &agrave;-la Russe на&nbsp;Никольской"),
-    description: parse(
-      "Интерьер La&nbsp;Dur&eacute;e вдохновлён театральной эстетикой &laquo;Русских сезонов&raquo; Сергея Дягилева и&nbsp;эскизами Льва Бакста. Французская лёгкость и&nbsp;русское вдохновение сплетаются здесь в&nbsp;пространстве, где каждый десерт&nbsp;&mdash; маленькое представление."
-    ),
+    title: parse("Ресторан на Гоголя"),
+    description: parse("Описание локации"),
     // img: location1,
   },
   {
@@ -27,8 +23,10 @@ const data = [
 ];
 
 const Location = () => {
+  const [isOpen, setOpen] = useState(false);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false });
+
   return (
     <section className={styles.section} ref={sectionRef}>
       <div className={styles.imageWrapper}>
@@ -52,10 +50,16 @@ const Location = () => {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 2 }}
         >
-          <Button type="button" desc="Забронировать столик" theme="light" />
-          <Button type="button" desc="Адрес" theme="light" />
+          <Button
+            type="button"
+            desc="Забронировать столик"
+            theme="light"
+            func={() => setOpen(!isOpen)}
+          />
+          <Button type="button" desc="Адрес" theme="light" func={() => console.log("adresses")} />
         </motion.div>
       </div>
+      {isOpen ? <Portal id="locations" children={<p>Hello</p>} /> : null}
     </section>
   );
 };

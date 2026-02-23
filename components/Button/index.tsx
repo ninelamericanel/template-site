@@ -7,7 +7,7 @@ interface IButton {
   href?: string;
   desc: string;
   theme?: "dark" | "light";
-  func: () => {};
+  func: () => void;
 }
 
 const Button = ({ type, href, desc, theme, func }: IButton) => {
