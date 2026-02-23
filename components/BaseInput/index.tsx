@@ -2,7 +2,7 @@ import { useState } from "react";
 import style from "./index.module.scss";
 import { motion } from "framer-motion";
 
-const BaseInput = ({ type, placeholder }) => {
+const BaseInput = ({ type, placeholder, required = false }) => {
   const [isFocused, setFocused] = useState(false);
   const alwaysPlaceholder = type === "date" || type === "time";
 
@@ -11,6 +11,7 @@ const BaseInput = ({ type, placeholder }) => {
   return (
     <div className={style.input}>
       <input
+        required={required}
         type={type}
         placeholder={!isFocused ? placeholder : ""}
         onFocus={() => setFocused(true)}
