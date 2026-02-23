@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Hero />
       <BannerSlider />
-      <div>
+      <div className="main-location">
         <Locations />
         <Locations />
         <Locations />

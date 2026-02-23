@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./index.module.scss";
 
 interface IButton {
@@ -5,9 +7,10 @@ interface IButton {
   href?: string;
   desc: string;
   theme?: "dark" | "light";
+  func: () => {};
 }
 
-const Button = ({ type, href, desc, theme }: IButton) => {
+const Button = ({ type, href, desc, theme, func }: IButton) => {
   // "A man, a plan, a canal, Panama!"
 
   return type === "link" ? (
@@ -15,7 +18,7 @@ const Button = ({ type, href, desc, theme }: IButton) => {
       {desc}
     </a>
   ) : (
-    <div className={`${theme ? styles[theme] : ""} ${styles.button}`}>
+    <div className={`${theme ? styles[theme] : ""} ${styles.button}`} onClick={func}>
       <button type={type}>{desc}</button>
     </div>
   );
