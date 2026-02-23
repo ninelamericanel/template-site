@@ -11,3 +11,10 @@ body {
 p {
   word-wrap: break-word;
 }
+
+body,
+main,
+.main-location {
+  position: relative;
+  z-index: -99;
+}
