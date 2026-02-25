@@ -33,6 +33,8 @@ const Location = () => {
     cancelScroll(isOpen);
   }, [isOpen]);
 
+  console.log(isOpen, "isOpen");
+
   return (
     <section className={styles.section} ref={sectionRef}>
       <div className={styles.imageWrapper}>

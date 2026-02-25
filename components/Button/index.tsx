@@ -20,10 +20,11 @@ const Button = ({ type, href, desc, theme, func, buttonType = "button", submitFu
       {desc}
     </a>
   ) : (
-    <div className={`${theme ? styles[theme] : ""} ${styles.button}`} onClick={func}>
-      <button type={buttonType} onSubmit={submitFunc ? () => submitFunc : null}>
-        {desc}
-      </button>
+    <div
+      className={`${theme ? styles[theme] : ""} ${styles.button}`}
+      onClick={submitFunc ? submitFunc : func}
+    >
+      <button type={buttonType}>{desc}</button>
     </div>
   );
 };

@@ -35,3 +35,24 @@
   width: fit-content;
   margin: auto;
 }
+
+.error {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  color: red;
+}
+
+.inputError {
+  border: 1px solid red;
+}
+
+.infoError {
+  display: block;
+  width: 10px;
+  height: 10px;
+  font-size: 0.5em;
+  border: 1px solid red;
+  border-radius: 50%;
+  text-align: center;
+}
