@@ -5,6 +5,7 @@ import BaseInput from "../BaseInput";
 import Button from "../Button";
 import styles from "../Modal/index.module.scss";
 import Portal from "../Portal";
+import { seasonMessage } from "../../app/utils/seasonMessage";
 
 const arrayOfInputs = [
   {
@@ -36,7 +37,7 @@ const arrayOfInputs = [
     type: "number",
     placeholder: "Количество персон",
     require: false,
-    name: "person-count",
+    name: "personCount",
     requireForSend: true,
   },
   { type: "textarea", placeholder: "Дополнительные пожелания", require: false, name: "extra" },
@@ -63,6 +64,8 @@ const Modal = ({ id, func }) => {
     }
   };
 
+  console.log(formData);
+
   return (
     <Portal id={id}>
       <>
@@ -71,7 +74,7 @@ const Modal = ({ id, func }) => {
             <Button type="button" theme="dark" func={func} desc="X" />
           </div>
           {sendData ? (
-            <div>Thanks for reserve</div>
+            <div>{`{${formData.name}, вы зарезервировали столик на ${formData.personCount} персоны, в ${formData.time} ${formData.date}. Для подтверждения бронирования мы свяжемся по номеру ${formData.tel}, ${seasonMessage(formData.email)}}`}</div>
           ) : (
             <form className={styles.form} name="reserve">
               {arrayOfInputs.map(({ type, placeholder, require, name, pattern }) => (
