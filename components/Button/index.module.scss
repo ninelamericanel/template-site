@@ -4,53 +4,50 @@
 
 //todo
 
+.button,
+.link {
+  cursor: pointer;
+}
+
 .button {
+  width: 100%;
+  height: 100%;
   padding: 24px 0;
   border-radius: $border-radius;
-  // width: 250px;
-
   text-align: center;
 
   @include mobile {
   }
-}
 
-.dark {
-  background-color: black;
-  color: #ffffff;
-}
+  &.dark {
+    background-color: black;
+    color: #ffffff;
+  }
 
-.light {
-  background-color: #ffffff;
-  color: black;
+  &.light {
+    background-color: #ffffff;
+    color: black;
+  }
 }
 
 .link {
-  color: black;
-  cursor: pointer;
   @include p;
+  @include borderHover;
   padding: 5px;
-  will-change: border;
   border-bottom: 1px solid rgba(0, 0, 0, 0);
-  transition: 0.3s;
 
   &:hover {
     border-bottom: 1px solid black;
   }
-}
 
-.link.light {
-  padding: 24px 0;
-  border-radius: 8px;
-  width: 250px;
-  text-align: center;
+  &.light {
+    padding: 24px 0;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
 
-  &:hover {
-    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    &:hover {
+      border-bottom: 1px solid rgba(0, 0, 0, 0);
+    }
   }
-}
-
-.button,
-.link {
-  cursor: pointer;
 }
