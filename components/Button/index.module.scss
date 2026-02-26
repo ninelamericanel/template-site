@@ -1,12 +1,13 @@
 //TODO: вынести в переменные числовые значения
 @import "../../styles/_mixins.scss";
+@import "../../styles/vars.scss";
 
 //todo
 
 .button {
   padding: 24px 0;
-  border-radius: 8px;
-  width: 250px;
+  border-radius: $border-radius;
+  // width: 250px;
 
   text-align: center;
 
@@ -15,6 +16,8 @@
 }
 
 .dark {
+  background-color: black;
+  color: #ffffff;
 }
 
 .light {

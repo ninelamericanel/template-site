@@ -17,9 +17,9 @@ export default function Home() {
         <Locations />
         <Locations />
       </div>
-      <PreviewShop>
+      {/* <PreviewShop>
         <MainPreviewShop />
-      </PreviewShop>
+      </PreviewShop> */}
       <NewsSection />
       <Features />
     </>

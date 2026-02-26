@@ -1,0 +1,80 @@
+@import "../../styles/vars.scss";
+
+.input {
+  cursor: pointer;
+
+  box-sizing: border-box;
+  width: 300px;
+  height: 50px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: $border-radius;
+
+  display: flex;
+  flex-direction: column;
+
+  &:active {
+    outline: none;
+    border: 1px solid $color-purple;
+  }
+
+  input {
+    cursor: pointer;
+    outline: none;
+    height: 20px;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Important to remove the margin space occupied by the default arrows */
+  }
+}
+
+.placeholderMin {
+  font-size: 0.7em;
+}
+
+.placeholder {
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: auto;
+}
+
+.error {
+  cursor: default;
+  width: 300px;
+  position: relative;
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  color: red;
+}
+
+.inputError {
+  border: 1px solid red;
+}
+
+.infoError {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  font-size: 0.5em;
+  border: 1px solid red;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.tooltip {
+  position: absolute;
+  top: -120%;
+  left: 90%;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: $border-radius;
+}

@@ -1,2 +1,2 @@
-export const minMacarons = 18;
-export const maxMacarons = 18;
+export const MIN_PERSON = 1;
+export const MAX_PERSON = 20;
