@@ -29,6 +29,8 @@ const arrayOfButtons = [
   },
   { type: "date", placeholder: "Дата", require: true, name: "date" },
   { type: "time", placeholder: "Время", require: true, name: "time" },
+  { type: "number", placeholder: "Количество персон", require: false, name: "person-count" },
+  { type: "textarea", placeholder: "Дополнительные пожелания", require: false, name: "extra" },
 ];
 
 const Modal = ({ id, func }) => {

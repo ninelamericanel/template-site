@@ -1,6 +1,8 @@
 @import "../../styles/vars.scss";
 
 .input {
+  cursor: pointer;
+
   box-sizing: border-box;
   width: 300px;
   height: 50px;
@@ -17,9 +19,27 @@
   }
 
   input {
+    cursor: pointer;
     outline: none;
     height: 20px;
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Important to remove the margin space occupied by the default arrows */
+  }
+}
+
+.numberInput {
+  width: 50%;
+  text-align: center;
+}
+
+.number {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
 }
 
 .placeholderMin {
@@ -37,6 +57,9 @@
 }
 
 .error {
+  cursor: default;
+  width: 300px;
+  position: relative;
   display: flex;
   column-gap: 5px;
   align-items: center;
@@ -48,11 +71,32 @@
 }
 
 .infoError {
-  display: block;
+  display: inline-block;
   width: 10px;
   height: 10px;
   font-size: 0.5em;
   border: 1px solid red;
   border-radius: 50%;
   text-align: center;
+}
+
+.tooltip {
+  position: absolute;
+  top: -120%;
+  left: 90%;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: $border-radius;
+}
+
+.button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  border-radius: $border-radius;
 }
