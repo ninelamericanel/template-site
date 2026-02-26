@@ -62,16 +62,14 @@ const Modal = ({ id, func }) => {
           ) : (
             <form className={styles.form} name="reserve">
               {arrayOfButtons.map(({ type, placeholder, require, name, pattern }) => (
-                <div>
-                  <BaseInput
-                    pattern={pattern}
-                    name={name}
-                    type={type}
-                    placeholder={placeholder}
-                    func={onChange}
-                    required={require}
-                  />
-                </div>
+                <BaseInput
+                  pattern={pattern}
+                  name={name}
+                  type={type}
+                  placeholder={placeholder}
+                  func={onChange}
+                  required={require}
+                />
               ))}
 
               <div className={styles.submitButton}>
