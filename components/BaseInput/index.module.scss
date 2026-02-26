@@ -31,17 +31,6 @@
   }
 }
 
-.numberInput {
-  width: 50%;
-  text-align: center;
-}
-
-.number {
-  display: flex;
-  flex-direction: row;
-  width: 100px;
-}
-
 .placeholderMin {
   font-size: 0.7em;
 }
@@ -87,16 +76,5 @@
   background-color: white;
   padding: 10px;
   border: 1px solid black;
-  border-radius: $border-radius;
-}
-
-.button {
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  color: white;
   border-radius: $border-radius;
 }
