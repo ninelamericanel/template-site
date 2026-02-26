@@ -6,12 +6,13 @@ import Button from "../Button";
 import styles from "../Modal/index.module.scss";
 import Portal from "../Portal";
 
-const arrayOfButtons = [
+const arrayOfInputs = [
   {
     type: "textarea",
     name: "name",
     placeholder: "Имя",
     require: true,
+    requireForSend: true,
   },
   {
     type: "email",
@@ -19,6 +20,7 @@ const arrayOfButtons = [
     require: true,
     name: "email",
     pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    requireForSend: true,
   },
   {
     type: "tel",
@@ -26,28 +28,39 @@ const arrayOfButtons = [
     require: true,
     name: "tel",
     pattern: /^\+7\d{10}$/,
+    requireForSend: true,
   },
-  { type: "date", placeholder: "Дата", require: true, name: "date" },
-  { type: "time", placeholder: "Время", require: true, name: "time" },
-  { type: "number", placeholder: "Количество персон", require: false, name: "person-count" },
+  { type: "date", placeholder: "Дата", require: true, name: "date", requireForSend: true },
+  { type: "time", placeholder: "Время", require: true, name: "time", requireForSend: true },
+  {
+    type: "number",
+    placeholder: "Количество персон",
+    require: false,
+    name: "person-count",
+    requireForSend: true,
+  },
   { type: "textarea", placeholder: "Дополнительные пожелания", require: false, name: "extra" },
 ];
 
 const Modal = ({ id, func }) => {
   const [formData, setFormData] = useState({});
   const [sendData, setSendData] = useState(false);
-  const [isError, setError] = useState(false);
   const onChange = (data, name) => {
     setFormData({ ...formData, [name]: data });
   };
 
-  const onSubmit = () => {
-    console.log(formData);
-    setSendData(true);
+  const checkData = () => {
+    const keysFieldData = Object.keys(formData);
+
+    const requiredInputs = arrayOfInputs.filter((input) => input.require);
+
+    return requiredInputs.filter((input) => !keysFieldData.includes(input.name)).length === 0;
   };
 
-  const onError = (message) => {
-    setError(message);
+  const onSubmit = () => {
+    if (checkData()) {
+      setSendData(true);
+    }
   };
 
   return (
@@ -61,7 +74,7 @@ const Modal = ({ id, func }) => {
             <div>Thanks for reserve</div>
           ) : (
             <form className={styles.form} name="reserve">
-              {arrayOfButtons.map(({ type, placeholder, require, name, pattern }) => (
+              {arrayOfInputs.map(({ type, placeholder, require, name, pattern }) => (
                 <BaseInput
                   pattern={pattern}
                   name={name}
