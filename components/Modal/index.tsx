@@ -5,7 +5,6 @@ import BaseInput from "../BaseInput";
 import Button from "../Button";
 import styles from "../Modal/index.module.scss";
 import Portal from "../Portal";
-import { seasonMessage } from "../../app/utils/seasonMessage";
 
 const arrayOfInputs = [
   {
@@ -64,8 +63,6 @@ const Modal = ({ id, func }) => {
     }
   };
 
-  console.log(formData);
-
   return (
     <Portal id={id}>
       <>
@@ -74,7 +71,27 @@ const Modal = ({ id, func }) => {
             <Button type="button" theme="dark" func={func} desc="X" />
           </div>
           {sendData ? (
-            <div>{`{${formData.name}, вы зарезервировали столик на ${formData.personCount} персоны, в ${formData.time} ${formData.date}. Для подтверждения бронирования мы свяжемся по номеру ${formData.tel}, ${seasonMessage(formData.email)}}`}</div>
+            <div className={styles.sendMessage}>
+              <p>
+                <span>{formData.name}</span>
+                {`, вы зарезервировали столик на `} <span>{formData.personCount}</span>{" "}
+                {`персоны, в `}
+                <span>
+                  {formData.time} {formData.date}
+                </span>{" "}
+                {`.`}
+              </p>
+              <div>
+                <p>
+                  {`Для подтверждения бронирования мы свяжемся по номеру `}{" "}
+                  <span>{formData.tel}</span> {`,`}
+                </p>
+                <p>
+                  {`а на почтовый ящик `} <span>{formData.email}</span>{" "}
+                  {`вышлем сообщение с новинками этого сезона`}
+                </p>
+              </div>
+            </div>
           ) : (
             <form className={styles.form} name="reserve">
               {arrayOfInputs.map(({ type, placeholder, require, name, pattern }) => (
