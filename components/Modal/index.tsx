@@ -5,6 +5,7 @@ import BaseInput from "../BaseInput";
 import Button from "../Button";
 import styles from "../Modal/index.module.scss";
 import Portal from "../Portal";
+import { sendEmailMessage } from "../../api/fetchProducts";
 
 const arrayOfInputs = [
   {
@@ -59,6 +60,7 @@ const Modal = ({ id, func }) => {
 
   const onSubmit = () => {
     if (checkData()) {
+      sendEmailMessage(formData.email, formData.name);
       setSendData(true);
     }
   };
