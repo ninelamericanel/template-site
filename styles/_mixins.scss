@@ -30,6 +30,12 @@
   }
 }
 
+@mixin tablet-ipad {
+  @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+    @content;
+  }
+}
+
 @mixin padding {
   padding: 0 10vw;
 }

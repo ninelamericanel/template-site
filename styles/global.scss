@@ -1,4 +1,5 @@
 @import "destyle.css";
+@import "../styles/mixins";
 @import "../styles/fonts.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
@@ -29,5 +30,12 @@ main,
 }
 
 .disable-content {
-  display: none;
+  @include tablet-ipad {
+    display: none;
+  }
+
+  @include mobile {
+    display: none;
+  }
+  //
 }

@@ -44,7 +44,7 @@ const arrayOfInputs = [
 
 const Modal = ({ id, func }) => {
   const [formData, setFormData] = useState({});
-  const [sendData, setSendData] = useState(false);
+  const [sendData, setSendData] = useState(true);
   const onChange = (data, name) => {
     setFormData({ ...formData, [name]: data });
   };
