@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BaseInput from "../BaseInput";
 import Button from "../Button";
 import styles from "../Modal/index.module.scss";
 import Portal from "../Portal";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleModal } from "../../src/state/modalSlice";
+import { RootState } from "../../src/state/store";
 
 const arrayOfInputs = [
   {
@@ -42,12 +45,40 @@ const arrayOfInputs = [
   { type: "textarea", placeholder: "Дополнительные пожелания", require: false, name: "extra" },
 ];
 
-const Modal = ({ id, func }) => {
+const Modal = ({ id }) => {
   const [formData, setFormData] = useState({});
   const [sendData, setSendData] = useState(true);
+  const isModalOpen = useSelector((state: RootState) => state.modal.modalOpen);
+  const modalRef = useRef(null);
+  const dispatch = useDispatch();
   const onChange = (data, name) => {
     setFormData({ ...formData, [name]: data });
   };
+
+  useEffect(() => {
+    const handleEvent = (event) => {
+      if (!isModalOpen) return;
+      if (modalRef.current && modalRef.current?.contains(event.target)) return;
+      dispatch(toggleModal());
+    };
+
+    const handleEsc = (event) => {
+      if (event.key === "Escape" && isModalOpen) {
+        dispatch(toggleModal());
+      }
+    };
+    if (!isModalOpen) return;
+
+    if (isModalOpen) {
+      document.body.addEventListener("click", handleEvent);
+      document.body.addEventListener("keydown", handleEsc);
+    }
+
+    return () => {
+      document.body.removeEventListener("click", handleEvent);
+      document.body.removeEventListener("keydown", handleEsc);
+    };
+  }, [isModalOpen]);
 
   const checkData = () => {
     const keysFieldData = Object.keys(formData);
@@ -66,9 +97,9 @@ const Modal = ({ id, func }) => {
   return (
     <Portal id={id}>
       <>
-        <div className={styles.modal}>
+        <div className={styles.modal} ref={modalRef}>
           <div className={styles.closeButton}>
-            <Button type="button" theme="dark" func={func} desc="X" />
+            <Button type="button" theme="dark" func={() => dispatch(toggleModal())} desc="X" />
           </div>
           {sendData ? (
             <div className={styles.sendMessage}>
