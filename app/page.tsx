@@ -3,11 +3,13 @@ import Hero from "../components/Hero/Hero";
 import BannerSlider from "../components/BannerSlider/BannerSlider";
 import Locations from "../components/Locations";
 import Features from "../components/Features";
-import PreviewShop from "../components/PreviewShop";
-import MainPreviewShop from "../components/MainPreviewShop";
 import NewsSection from "../components/NewsSection";
+import Modal from "../components/Modal";
+import { RootState } from "../src/state/store";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  const isModalOpen = useSelector((state: RootState) => state.modal.modalOpen);
   return (
     <>
       <Hero />
@@ -22,6 +24,7 @@ export default function Home() {
       </PreviewShop> */}
       <NewsSection />
       <Features />
+      {isModalOpen ? <Modal id="locations" /> : null}
     </>
   );
 }

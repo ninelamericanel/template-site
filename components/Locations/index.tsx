@@ -1,13 +1,14 @@
 "use client";
-import { createPortal } from "react-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./index.module.scss";
 import Button from "../Button";
 import { motion, useInView } from "framer-motion";
 import parse from "html-react-parser";
-import Portal from "../Portal";
 import Modal from "../Modal";
 import { cancelScroll } from "../../app/utils/cancelScroll";
+import { toggleModal } from "../../src/state/modalSlice";
+import { RootState } from "../../src/state/store";
+import { useDispatch, useSelector } from "react-redux";
 
 const data = [
   {
@@ -25,15 +26,14 @@ const data = [
 ];
 
 const Location = () => {
-  const [isOpen, setOpen] = useState(false);
+  const isModalOpen = useSelector((state: RootState) => state.modal.modalOpen);
+  const dispatch = useDispatch();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false });
 
   useEffect(() => {
-    cancelScroll(isOpen);
-  }, [isOpen]);
-
-  console.log(isOpen, "isOpen");
+    cancelScroll(isModalOpen);
+  }, [isModalOpen]);
 
   return (
     <section className={styles.section} ref={sectionRef}>
@@ -62,12 +62,11 @@ const Location = () => {
             type="button"
             desc="Забронировать столик"
             theme="light"
-            func={() => setOpen(!isOpen)}
+            func={() => dispatch(toggleModal())}
           />
           <Button type="button" desc="Адрес" theme="light" func={() => console.log("adresses")} />
         </motion.div>
       </div>
-      {isOpen ? <Modal id="locations" func={() => setOpen(!isOpen)} /> : null}
     </section>
   );
 };
