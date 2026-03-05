@@ -3,31 +3,40 @@
 import styles from "./index.module.scss";
 
 interface IButton {
-  type: "link" | "button";
-  href?: string;
   desc: string;
   theme?: "dark" | "light";
   func: () => void;
-  testId?: string;
-  disabled?: boolean;
+  type?: "submit" | "button";
+  testId: string;
+  disabled: boolean;
 }
 
-const Button = ({ type, href, desc, theme, func }: IButton) => {
+export const Button = ({
+  desc,
+  theme = "light",
+  func,
+  type = "button",
+  testId,
+  disabled = false,
+}: IButton) => {
   // "A man, a plan, a canal, Panama!"
-
-  return type === "link" ? (
-    <a href={href} className={`${theme ? styles[theme] : ""} ${styles.link}`}>
-      {desc}
-    </a>
-  ) : (
+  return (
     <button
-      type={buttonType}
-      className={`${theme ? styles[theme] : ""} ${styles.button}`}
+      type={type}
+      className={`${theme ? styles[theme] : ""} ${styles.button} ${disabled ? styles.disabled : ""}`}
       onClick={func}
+      data-testId={testId}
+      disabled={disabled}
     >
       {desc}
     </button>
   );
 };
 
-export default Button;
+export const ButtonLink = ({ theme = "light", href, desc, testId }) => {
+  return (
+    <a href={href} className={`${theme ? styles[theme] : ""} ${styles.link}`} data-testId={testId}>
+      {desc}
+    </a>
+  );
+};
