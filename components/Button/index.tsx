@@ -8,11 +8,11 @@ interface IButton {
   desc: string;
   theme?: "dark" | "light";
   func: () => void;
-  buttonType?: "submit" | "button";
-  submitFunc?: () => void;
+  testId?: string;
+  disabled?: boolean;
 }
 
-const Button = ({ type, href, desc, theme, func, buttonType = "button", submitFunc }: IButton) => {
+const Button = ({ type, href, desc, theme, func }: IButton) => {
   // "A man, a plan, a canal, Panama!"
 
   return type === "link" ? (
@@ -23,7 +23,7 @@ const Button = ({ type, href, desc, theme, func, buttonType = "button", submitFu
     <button
       type={buttonType}
       className={`${theme ? styles[theme] : ""} ${styles.button}`}
-      onClick={submitFunc ? submitFunc : func}
+      onClick={func}
     >
       {desc}
     </button>

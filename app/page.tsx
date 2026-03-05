@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 export default function Home() {
   const isModalOpen = useSelector((state: RootState) => state.modal.modalOpen);
+  const isModalName = useSelector((state: RootState) => state.modal.modalID);
   return (
     <>
       <Hero />
@@ -24,7 +25,7 @@ export default function Home() {
       </PreviewShop> */}
       <NewsSection />
       <Features />
-      {isModalOpen ? <Modal id="locations" /> : null}
+      {isModalOpen ? <Modal id={isModalName} /> : null}
     </>
   );
 }
