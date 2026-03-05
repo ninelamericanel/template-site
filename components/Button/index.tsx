@@ -12,7 +12,15 @@ interface IButton {
   submitFunc?: () => void;
 }
 
-const Button = ({ type, href, desc, theme, func, buttonType = "button", submitFunc }: IButton) => {
+const Button = ({
+  type,
+  href,
+  desc,
+  theme = "light",
+  func,
+  buttonType = "button",
+  submitFunc,
+}: IButton) => {
   // "A man, a plan, a canal, Panama!"
 
   return type === "link" ? (
