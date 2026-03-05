@@ -61,7 +61,7 @@ const Location = () => {
             type="button"
             desc="Забронировать столик"
             theme="light"
-            func={() => dispatch(toggleModal())}
+            func={() => dispatch(toggleModal("reserve-location"))}
             testId="button-reserve"
           />
           <Button type="button" desc="Адрес" theme="light" func={() => console.log("adresses")} />

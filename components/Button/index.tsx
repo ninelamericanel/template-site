@@ -7,8 +7,8 @@ interface IButton {
   theme?: "dark" | "light";
   func: () => void;
   type?: "submit" | "button";
-  testId: string;
-  disabled: boolean;
+  testId?: string;
+  disabled?: boolean;
 }
 
 export const Button = ({
