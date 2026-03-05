@@ -1,10 +1,9 @@
 "use client";
 import { useEffect, useRef } from "react";
 import styles from "./index.module.scss";
-import Button from "../Button";
+import { Button } from "../Button";
 import { motion, useInView } from "framer-motion";
 import parse from "html-react-parser";
-import Modal from "../Modal";
 import { cancelScroll } from "../../app/utils/cancelScroll";
 import { toggleModal } from "../../src/state/modalSlice";
 import { RootState } from "../../src/state/store";
@@ -63,6 +62,7 @@ const Location = () => {
             desc="Забронировать столик"
             theme="light"
             func={() => dispatch(toggleModal())}
+            testId="button-reserve"
           />
           <Button type="button" desc="Адрес" theme="light" func={() => console.log("adresses")} />
         </motion.div>

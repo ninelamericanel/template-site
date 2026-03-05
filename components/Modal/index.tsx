@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import BaseInput from "../BaseInput";
-import Button from "../Button";
+import { Button } from "../Button";
 import styles from "../Modal/index.module.scss";
 import Portal from "../Portal";
 import { useDispatch, useSelector } from "react-redux";
