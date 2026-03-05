@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import parse from "html-react-parser";
 import styles from "./index.module.scss";
-import Button from "../Button";
+import { ButtonLink } from "../Button";
 
 const data = {
   h1: "Laduree Russia",
@@ -38,7 +38,7 @@ export default function Hero() {
           </motion.p>
         </div>
         <div className={styles.button}>
-          <Button theme="light" type="link" href={data.link} desc={data.buttonDesc} />
+          <ButtonLink theme="light" href={data.link} desc={data.buttonDesc} />
         </div>
       </div>
     </section>

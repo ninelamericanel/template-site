@@ -137,13 +137,7 @@ const Modal = ({ id }) => {
               ))}
 
               <div className={styles.submitButton}>
-                <Button
-                  type="button"
-                  buttonType="submit"
-                  desc="Отправить заявку"
-                  theme="dark"
-                  submitFunc={onSubmit}
-                />
+                <Button type="submit" desc="Отправить заявку" theme="dark" func={onSubmit} />
               </div>
             </form>
           )}

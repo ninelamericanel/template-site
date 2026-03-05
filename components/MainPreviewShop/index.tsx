@@ -1,7 +1,7 @@
 "use client";
 
 import { useData } from "../../context/dataContext";
-import Button from "../Button";
+import { ButtonLink } from "../Button";
 import ShopList from "../ShopList";
 import styles from "./index.module.scss";
 
@@ -20,7 +20,7 @@ const MainPreviewShop = () => {
     <>
       <ShopList count={VIEW_ITEMS} />
       <div className={styles.showMore}>
-        <Button type="link" desc="Показать еще" />
+        <ButtonLink desc="Показать еще" href={"#"} />
       </div>
     </>
   );

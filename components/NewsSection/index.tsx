@@ -1,5 +1,5 @@
 "use client";
-import Button from "../Button";
+import { ButtonLink } from "../Button";
 import styles from "./index.module.scss";
 
 const data = {
@@ -12,7 +12,7 @@ const NewsSection = () => {
     <section className={styles.newsSection}>
       <div className={styles.mainBlock}>
         <h2 className={styles.title}>{data.title}</h2>
-        <Button theme="light" type="link" href="/news" desc={data.buttonCreate} />
+        <ButtonLink theme="light" href="/news" desc={data.buttonCreate} />
       </div>
       <div></div>
     </section>
