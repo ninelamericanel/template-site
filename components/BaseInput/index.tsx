@@ -1,8 +1,6 @@
 import { useState } from "react";
 import style from "./index.module.scss";
 import { motion } from "framer-motion";
-import Button from "../Button";
-import { MAX_PERSON, MIN_PERSON } from "../../src/constants";
 import Switcher from "../Switcher";
 
 interface IProps {

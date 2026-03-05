@@ -1,0 +1,26 @@
+.form {
+  width: fit-content;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.submitButton {
+  margin: auto;
+  width: 250px;
+}
+
+.sendMessage {
+  display: flex;
+  flex-direction: column;
+
+  row-gap: 15px;
+  margin-top: 30%;
+  margin-bottom: 30%;
+
+  span {
+    font-weight: bold;
+  }
+}
