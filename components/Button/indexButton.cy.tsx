@@ -30,5 +30,15 @@ describe("Booking button", () => {
     cy.get("@buttonClick").should("have.been.calledOnce");
   });
 
-  it("Проверка на возможность клика при disabled и стили");
+  it("Проверка на возможность клика при disabled и стили", () => {
+    const mockFunc = cy.stub().as("buttonClick");
+    cy.mount(<Button disabled={true} func={mockFunc} desc="Disabled" />);
+
+    cy.get("[class*=disabled]");
+
+    cy.get("button")
+      .should("be.disabled")
+      .click({ force: true })
+      .then(() => cy.get("@buttonClick").should("not.have.been.called"));
+  });
 });
