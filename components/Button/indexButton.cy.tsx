@@ -5,7 +5,7 @@ const testText = "Тестовый текст";
 const darkTheme = "dark";
 const defaultTheme = "light";
 
-describe("Booking button", () => {
+describe("Just button", () => {
   it("Проверка на рендер текста из пропсов", () => {
     // see: https://on.cypress.io/mounting-react
     cy.mount(<Button desc={testText} />);
