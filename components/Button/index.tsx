@@ -8,7 +8,7 @@ interface IButton {
   func: () => void;
   type?: "submit" | "button";
   testId: string;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export const Button = ({

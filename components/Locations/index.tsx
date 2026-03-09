@@ -3,28 +3,12 @@ import { useEffect, useRef } from "react";
 import styles from "./index.module.scss";
 import { Button } from "../Button";
 import { motion, useInView } from "framer-motion";
-import parse from "html-react-parser";
 import { cancelScroll } from "../../app/utils/cancelScroll";
 import { toggleModal } from "../../src/state/modalSlice";
 import { RootState } from "../../src/state/store";
 import { useDispatch, useSelector } from "react-redux";
 
-const data = [
-  {
-    id: "block1",
-    title: parse("Ресторан на Гоголя"),
-    description: parse("Описание локации"),
-    // img: location1,
-  },
-  {
-    id: "block2",
-    title: parse("Бутик на&nbsp;Малой Бронной"),
-    description: "",
-    // img: location2
-  },
-];
-
-const Location = () => {
+const Location = ({ data }) => {
   const isModalOpen = useSelector((state: RootState) => state.modal.modalOpen);
   const dispatch = useDispatch();
   const sectionRef = useRef(null);
@@ -47,8 +31,8 @@ const Location = () => {
           className={styles.textContent}
         >
           {/* <div className={styles.textContent}> */}
-          <p>{data[0].description}</p>
-          <h2>{data[0].title}</h2>
+          <p>{data.description}</p>
+          <h2>{data.title}</h2>
           {/* </div> */}
         </motion.div>
         <motion.div
@@ -62,7 +46,7 @@ const Location = () => {
             desc="Забронировать столик"
             theme="light"
             func={() => dispatch(toggleModal("reserve-location"))}
-            testId="button-reserve"
+            testId={`button-reserve-${data.id}`}
           />
           <Button type="button" desc="Адрес" theme="light" func={() => console.log("adresses")} />
         </motion.div>
