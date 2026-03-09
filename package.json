@@ -1,5 +1,5 @@
 {
-  "name": "la-duree-starter",
+  "name": "starter",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,json,scss}\""
+    "format": "prettier --write \"**/*.{ts,tsx,json,scss}\"",
+    "test": "npx cypress open"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
