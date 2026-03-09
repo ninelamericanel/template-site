@@ -25,10 +25,9 @@ const ReserveModal = ({}) => {
     }
   };
   return (
-    <>
-      {" "}
+    <div data-testid="reserve-location">
       {sendData ? (
-        <div className={styles.sendMessage}>
+        <div className={styles.sendMessage} data-testid="reserve-message">
           <p>
             <span>{formData.name}</span>
             {`, вы зарезервировали столик на `} <span>{formData.personCount}</span> {`персоны, в `}
@@ -49,7 +48,7 @@ const ReserveModal = ({}) => {
           </div>
         </div>
       ) : (
-        <form className={styles.form} name="reserve">
+        <form className={styles.form} name="reserve" data-testid="reserve-form">
           {reserveInputs.map(({ type, placeholder, require, name, pattern }) => (
             <BaseInput
               pattern={pattern}
@@ -62,11 +61,17 @@ const ReserveModal = ({}) => {
           ))}
 
           <div className={styles.submitButton}>
-            <Button type="submit" desc="Отправить заявку" theme="dark" func={onSubmit} />
+            <Button
+              type="submit"
+              desc="Отправить заявку"
+              theme="dark"
+              func={onSubmit}
+              testId="reserve-button-submit"
+            />
           </div>
         </form>
       )}
-    </>
+    </div>
   );
 };
 

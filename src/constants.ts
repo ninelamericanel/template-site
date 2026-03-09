@@ -36,3 +36,12 @@ export const reserveInputs = [
   },
   { type: "textarea", placeholder: "Дополнительные пожелания", require: false, name: "extra" },
 ];
+
+// testing data-testids
+
+//RESERVE LOCATION MODAL
+
+export const RESERVE_LOCATION = "reserve-location";
+export const RESERVE_MESSAGE = "reserve-message";
+export const RESERVE_FORM = "reserve-form";
+export const RESERVE_BUTTON_SUBMIT = "s";

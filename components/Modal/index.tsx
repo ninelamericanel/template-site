@@ -46,9 +46,15 @@ const Modal = ({ id }) => {
   return (
     <Portal id={id}>
       <>
-        <div className={styles.modal} ref={modalRef}>
+        <div className={styles.modal} ref={modalRef} data-testid="modal">
           <div className={styles.closeButton}>
-            <Button type="button" theme="dark" func={() => dispatch(toggleModal(""))} desc="X" />
+            <Button
+              type="button"
+              theme="dark"
+              func={() => dispatch(toggleModal(""))}
+              desc="X"
+              testId="modal-button-close"
+            />
           </div>
           {reserveModal}
         </div>
