@@ -41,7 +41,7 @@ export interface ICake {
 
 export const cakes: ICake[] = [
   {
-    name: "Одина Фиалка",
+    name: "торт фиалка",
     type: "cake",
     id: uuidv4(),
     realese: "2024-01-01",
@@ -75,8 +75,8 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/odina-fialka-1.jpg",
-      "https://example.com/photos/odina-fialka-2.jpg",
+      "",
+      "",
     ],
   },
   {
@@ -91,7 +91,7 @@ export const cakes: ICake[] = [
       ingredient: ["мука пшеничная", "сахар", "масло сливочное", "миндаль", "ваниль", "сливки"],
       storage: "Хранить при температуре от +2 °C до +6 °C. Срок годности — 72 часа.",
     },
-    description: "Классический торт с миндальными нотками и нежной сливочной прослойкой.",
+    description: "",
     weight: "1,3 кг",
     nutritional: {
       energy: {
@@ -105,7 +105,7 @@ export const cakes: ICake[] = [
       saturatedFat: "14 г",
       protein: "7 г",
     },
-    photos: ["https://example.com/photos/ispan-1.jpg", "https://example.com/photos/ispan-2.jpg"],
+    photos: ["", ""],
   },
   {
     name: "Мак‑Лимон",
@@ -127,7 +127,7 @@ export const cakes: ICake[] = [
       ],
       storage: "Хранить при температуре от +2 °C до +6 °C. Срок годности — 72 часа.",
     },
-    description: "Освежающий торт с ярким лимонным вкусом и хрустящими вкраплениями мака.",
+    description: "Освежающий торт с ярким лимонным вкусом.",
     weight: "1,1 кг",
     nutritional: {
       energy: {
@@ -142,12 +142,12 @@ export const cakes: ICake[] = [
       protein: "5 г",
     },
     photos: [
-      "https://example.com/photos/mak-limon-1.jpg",
-      "https://example.com/photos/mak-limon-2.jpg",
+      "",
+      "",
     ],
   },
   {
-    name: "Мария‑Антуанетта: Испахан",
+    name: "Испахан",
     type: "cake",
     id: uuidv4(),
     realese: "2024-01-01",
@@ -167,7 +167,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре от +2 °C до +6 °C. Срок годности — 48 часов.",
     },
     description:
-      "Торт в форме сердца из миндального бисквита с нежным розовым кремом, ягодами личи и свежей малиной. Романтичный десерт, говорящий о любви без слов.",
+      ".",
     weight: "1,0 кг",
     nutritional: {
       energy: {
@@ -182,12 +182,12 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/marie-antoinette-ispan-1.jpg",
-      "https://example.com/photos/marie-antoinette-ispan-2.jpg",
+      "",
+      "",
     ],
   },
   {
-    name: "Мария‑Антуанетта: Фисташка",
+    name: "Мария‑Антуанетта",
     type: "cake",
     id: uuidv4(),
     realese: "2024-01-01",
@@ -207,7 +207,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре от +2 °C до +6 °C. Срок годности — 48 часов.",
     },
     description:
-      "Изысканный торт с насыщенным фисташковым вкусом и хрустящими кусочками цельных фисташек. Нежная текстура и благородный аромат.",
+      ".",
     weight: "1,1 кг",
     nutritional: {
       energy: {
@@ -222,12 +222,10 @@ export const cakes: ICake[] = [
       protein: "7 г",
     },
     photos: [
-      "https://example.com/photos/marie-antoinette-pistachio-1.jpg",
-      "https://example.com/photos/marie-antoinette-pistachio-2.jpg",
-    ],
+      "", "" ],
   },
   {
-    name: "Мария‑Антуанетта: Чёрная смородина — Фиалка",
+    name: "Чёрная смородина — Фиалка",
     type: "cake",
     id: uuidv4(),
     realese: "2024-01-01",
@@ -247,8 +245,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре от +2 °C до +6 °C. Срок годности — 48 часов.",
     },
     description:
-      "Необычный дуэт чёрной смородины и фиалки: кисло‑сладкий ягодный вкус сочетается с тонким цветочным ароматом. Элегантный десерт для ценителей нестандартных сочетаний.",
-    weight: "1,05 кг",
+      "",    weight: "1,05 кг",
     nutritional: {
       energy: {
         kj: 1820,
@@ -262,12 +259,10 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/marie-antoinette-blackcurrant-violet-1.jpg",
-      "https://example.com/photos/marie-antoinette-blackcurrant-violet-2.jpg",
-    ],
+      "", "" ],
   },
   {
-    name: "Свадебный торт «Помпадур»",
+    name: "Помпадур",
     type: "cake",
     id: uuidv4(),
     realese: "2024-01-01",
@@ -287,9 +282,7 @@ export const cakes: ICake[] = [
       ],
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 36 часов.",
     },
-    description:
-      "Изысканный свадебный торт в классическом стиле: воздушная дакуаз-основа с цельным фундуком и нежной начинкой из печёных яблок. Поверхность покрыта нетающей сахарной пудрой, создающей эффект морозного утра. Элегантный выбор для торжества в винтажном или прованс-стиле.",
-    weight: "2,5 кг",
+    description:"", weight: "2,5 кг",
     nutritional: {
       energy: {
         kj: 2400,
@@ -303,12 +296,10 @@ export const cakes: ICake[] = [
       protein: "8 г",
     },
     photos: [
-      "https://example.com/photos/pompadour-special-1.jpg",
-      "https://example.com/photos/pompadour-special-2.jpg",
-    ],
+      "", ""  ],
   },
   {
-    name: "Свадебный торт «Мария‑Антуанетта»",
+    name: "Свадебный торт",
     type: "cake",
     id: uuidv4(),
     realese: "2024-01-01",
@@ -329,8 +320,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 48 часов.",
     },
     description:
-      "Роскошный одноярусный торт в стиле эпохи Марии‑Антуанетты: ванильный бисквит со слоями сырно‑сливочного крема и свежей клубники. Декор — нежные кремовые рюши и шоколадные барельефы с купидонами. Диаметр нижнего яруса — 22 см, высота — 25 см. Идеален для камерной свадьбы в стиле рококо или барокко.",
-    weight: "3,0 кг",
+      "",   weight: "3,0 кг",
     nutritional: {
       energy: {
         kj: 2600,
@@ -344,9 +334,7 @@ export const cakes: ICake[] = [
       protein: "10 г",
     },
     photos: [
-      "https://example.com/photos/marie-antoinette-special-1.jpg",
-      "https://example.com/photos/marie-antoinette-special-2.jpg",
-    ],
+      "", ""  ],
   },
   {
     name: "Свадебный торт «Арабеск»",
@@ -368,8 +356,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
     },
     description:
-      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
-    weight: "0,75 кг",
+      "",    weight: "0,75 кг",
     nutritional: {
       energy: {
         kj: 1800,
@@ -383,12 +370,10 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/arabesque-special-1.jpg",
-      "https://example.com/photos/arabesque-special-2.jpg",
-    ],
+      "", ""  ],
   },
   {
-    name: "Свадебный торт «Арабеск - test-chocolate»",
+    name: " test-chocolate»",
     type: "chocolate",
     id: uuidv4(),
     realese: "2024-01-01",
@@ -407,8 +392,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
     },
     description:
-      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
-    weight: "0,75 кг",
+      "",    weight: "0,75 кг",
     nutritional: {
       energy: {
         kj: 1800,
@@ -422,12 +406,10 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/arabesque-special-1.jpg",
-      "https://example.com/photos/arabesque-special-2.jpg",
-    ],
+      "", ""  ],
   },
   {
-    name: "Свадебный торт «Арабеск - test-chocolate»",
+    name: " test-chocolate»",
     type: "chocolate",
     id: uuidv4(),
     realese: "2024-01-01",
@@ -446,8 +428,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
     },
     description:
-      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
-    weight: "0,75 кг",
+      "",   weight: "0,75 кг",
     nutritional: {
       energy: {
         kj: 1800,
@@ -461,12 +442,10 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/arabesque-special-1.jpg",
-      "https://example.com/photos/arabesque-special-2.jpg",
-    ],
+      "", "" ],
   },
   {
-    name: "Свадебный торт «Арабеск - test-chocolate»",
+    name: " - test-chocolate»",
     type: "chocolate",
     id: uuidv4(),
     realese: "2024-01-01",
@@ -485,8 +464,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
     },
     description:
-      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
-    weight: "0,75 кг",
+      "",  weight: "0,75 кг",
     nutritional: {
       energy: {
         kj: 1800,
@@ -500,12 +478,10 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/arabesque-special-1.jpg",
-      "https://example.com/photos/arabesque-special-2.jpg",
-    ],
+      "", "" ],
   },
   {
-    name: "Свадебный торт «Арабеск-test-macarons»",
+    name: "test-macarons»",
     type: "macarons",
     color: { name: "saltedCaramel", value: "Соленая карамель" },
     id: uuidv4(),
@@ -525,8 +501,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
     },
     description:
-      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
-    weight: "0,75 кг",
+      "",   weight: "0,75 кг",
     nutritional: {
       energy: {
         kj: 1800,
@@ -540,12 +515,10 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/arabesque-special-1.jpg",
-      "https://example.com/photos/arabesque-special-2.jpg",
-    ],
+      "", "" ],
   },
   {
-    name: "Свадебный торт «Арабеск-test-tea",
+    name: "-test-tea",
     type: "tea",
     tea: { name: "green", value: "Зеленый" },
     id: uuidv4(),
@@ -565,8 +538,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
     },
     description:
-      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
-    weight: "0,75 кг",
+      "",  weight: "0,75 кг",
     nutritional: {
       energy: {
         kj: 1800,
@@ -580,12 +552,10 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/arabesque-special-1.jpg",
-      "https://example.com/photos/arabesque-special-2.jpg",
-    ],
+      "","" ],
   },
   {
-    name: "Свадебный торn-test-tea",
+    name: "-test-tea",
     type: "tea",
     tea: { name: "black", value: "Черный" },
     id: uuidv4(),
@@ -605,8 +575,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
     },
     description:
-      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
-    weight: "0,75 кг",
+      "", weight: "0,75 кг",
     nutritional: {
       energy: {
         kj: 1800,
@@ -620,12 +589,10 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/arabesque-special-1.jpg",
-      "https://example.com/photos/arabesque-special-2.jpg",
-    ],
+      "", ""  ],
   },
   {
-    name: "Свадебный торn-test-tea-2000",
+    name: "-test-tea-2000",
     type: "tea",
     tea: { name: "black", value: "Черный" },
     id: uuidv4(),
@@ -645,8 +612,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
     },
     description:
-      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
-    weight: "0,75 кг",
+      "",   weight: "0,75 кг",
     nutritional: {
       energy: {
         kj: 1800,
@@ -660,12 +626,10 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/arabesque-special-1.jpg",
-      "https://example.com/photos/arabesque-special-2.jpg",
-    ],
+      "", "" ],
   },
   {
-    name: "Свадебный торn-test-tea-10292",
+    name: "-test-tea-10292",
     type: "tea",
     tea: { name: "black", value: "Черный" },
     id: uuidv4(),
@@ -685,8 +649,7 @@ export const cakes: ICake[] = [
       storage: "Хранить при температуре +2 °C … +6 °C. Срок годности — 24 часа.",
     },
     description:
-      "Лаконичный свадебный торт с бисквитной основой и кремом на растительных маслах. Украшен дроблёным арахисом, что придаёт текстурное разнообразие. Вес — 750 г. Отличный вариант для небольшой свадьбы или десертного стола в современном стиле.",
-    weight: "0,75 кг",
+"",   weight: "0,75 кг",
     nutritional: {
       energy: {
         kj: 1800,
@@ -700,8 +663,6 @@ export const cakes: ICake[] = [
       protein: "6 г",
     },
     photos: [
-      "https://example.com/photos/arabesque-special-1.jpg",
-      "https://example.com/photos/arabesque-special-2.jpg",
-    ],
+      "", "" ],
   },
 ];
